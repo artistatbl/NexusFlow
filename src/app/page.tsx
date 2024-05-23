@@ -37,8 +37,8 @@ export default function Home() {
                     Start For Free Today
                   </span>
                 </Button>
-                <h1 className="text-5xl md:text-8xl  bg-clip-text text-transparent bg-gradient-to-b from-white to-neutral-600 font-sans font-bold">
-                  Automate Your Work With Fuzzie
+                <h1 className="text-5xl md:text-8xl mb-4 bg-clip-text text-transparent bg-gradient-to-b from-white to-neutral-600 font-sans font-bold">
+                  Automate Your Work With NexusFlow
                 </h1>
               </div>
             }
@@ -248,10 +248,20 @@ export default function Home() {
 
       {/* footer */}
 
-    <section className="w-full  p-28 m-20 border-t-2 border-gray-300">
-  <div className="container mx-auto px-4 grid grid-cols-1 md:grid-cols-3 gap-4">
-    <div>
-      <h2 className="text-xl font-bold">NexusFlow</h2>
+    <section className="w-full  p-28 m-20 border-t border-black[0.5] text-justify ">
+  <div className="container mx-auto px-4 items-start grid grid-cols-1 md:grid-cols-3 gap-4">
+    <div className="flex flex-col items-start">
+    <aside className="flex text-center items-center gap-[2px]">
+        <p className="text-3xl font-bold ">Nexus</p>
+        <Image
+          src="/logo.png"
+          width={15}
+          height={15}
+          alt="fuzzie logo"
+          className="shadow-sm"
+        />
+        <p className="text-3xl font-bold ">Flow</p>
+      </aside>
       <p className="text-sm">&copy; 2023 NexusFlow. All rights reserved.</p>
     </div>
     <div className="flex flex-col items-center md:items-start">
