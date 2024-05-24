@@ -1,15 +1,13 @@
 "use client";
 import React, { useRef } from "react";
-import Image from 'next/image'
-
 import { useScroll, useTransform, motion, MotionValue } from "framer-motion";
 
 export const ContainerScroll = ({
   titleComponent,
-//   children,
+  children,
 }: {
   titleComponent: string | React.ReactNode;
-//   children: React.ReactNode;
+  children: React.ReactNode;
 }) => {
   const containerRef = useRef<any>(null);
   const { scrollYProgress } = useScroll({
@@ -38,7 +36,7 @@ export const ContainerScroll = ({
 
   return (
     <div
-      className="h-[6rem] md:h-[85rem] flex items-center justify-center relative p-2 md:p-20"
+      className="h-[60rem] md:h-[80rem] flex items-center justify-center relative p-2 md:p-20"
       ref={containerRef}
     >
       <div
@@ -48,11 +46,9 @@ export const ContainerScroll = ({
         }}
       >
         <Header translate={translate} titleComponent={titleComponent} />
-        <Card 
-	   rotate={rotate}
-	    translate={translate}
-	     scale={scale}/>
-       
+        <Card rotate={rotate} translate={translate} scale={scale}>
+          {children}
+        </Card>
       </div>
     </div>
   );
@@ -74,10 +70,12 @@ export const Header = ({ translate, titleComponent }: any) => {
 export const Card = ({
   rotate,
   scale,
+  children,
 }: {
   rotate: MotionValue<number>;
   scale: MotionValue<number>;
   translate: MotionValue<number>;
+  children: React.ReactNode;
 }) => {
   return (
     <motion.div
@@ -90,14 +88,7 @@ export const Card = ({
       className="max-w-5xl -mt-12 mx-auto h-[30rem] md:h-[40rem] w-full border-4 border-[#6C6C6C] p-2 md:p-6 bg-[#222222] rounded-[30px] shadow-2xl"
     >
       <div className=" h-full w-full  overflow-hidden rounded-2xl bg-gray-100 dark:bg-zinc-900 md:rounded-2xl md:p-4 ">
-	 <Image
-          src="/banner.png"
-          width={2000}
-		height={2000}
-		layout="responsive"
-          alt="bannerImage"
-          className="object-cover border-8 rounded-2xl"
-        />
+        {children}
       </div>
     </motion.div>
   );
