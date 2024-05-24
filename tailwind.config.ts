@@ -63,10 +63,10 @@ const config = {
           to: {
             transform: 'translate(calc(-50% - 0.5rem))',
           },
-          shimmer: {
-            "0%, 90%, 100%": "background-position: calc(-100% - var(--shimmer-width)) 0;",
-            "30%, 60%": "background-position: calc(100% + var(--shimmer-width)) 0;",
-          },
+          // shimmer: {
+          //   "0%, 90%, 100%": "background-position: calc(-100% - var(--shimmer-width)) 0;",
+          //   "30%, 60%": "background-position: calc(100% + var(--shimmer-width)) 0;",
+          // },
         },
         spotlight: {
           '0%': {
