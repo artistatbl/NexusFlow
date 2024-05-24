@@ -15,7 +15,7 @@ import { LampComponent } from '@/components/global/lamp'
 import Navbar from '@/components/global/navbar'
 import { Button } from '@/components/ui/button'
 import { clients, products } from '@/lib/constant'
-import { CheckIcon } from 'lucide-react'
+import { CheckIcon, LinkedinIcon, MailCheckIcon, Twitter } from 'lucide-react'
 import Image from 'next/image'
 
 export default function Home() {
@@ -206,9 +206,9 @@ export default function Home() {
           </CardContainer>
         </div>
       </section>
-      <section className=" w-full p-20 ">
+      <section className=" w-[80vw] items-start justify-start mb-10 ">
 
-        <h1 className="text-5xl md:text-7xl text-center  bg-clip-text text-transparent bg-gradient-to-b from-white to-neutral-600 font-sans font-bold mt-16">Frequently Asked Questions</h1>
+        <h1 className="text-4xl md:text-6xl text-center  bg-clip-text text-transparent bg-gradient-to-b from-white to-neutral-600 font-sans font-bold mt-16">Frequently Asked Questions</h1>
         
 
       <Accordion type="single" collapsible className="w-full">
@@ -248,10 +248,30 @@ export default function Home() {
 
       {/* footer */}
 
-    <section className="w-full  p-28 m-20 border-t border-black[0.5] text-justify ">
-  <div className="container mx-auto px-4 items-start grid grid-cols-1 md:grid-cols-3 gap-4">
-    <div className="flex flex-col items-start">
-    <aside className="flex text-center items-center gap-[2px]">
+
+      <section className="w-full p-10 border-t border-black[0.5] text-justify bg-neutral-950 text-white">
+  <div className="container mx-auto px-4 grid grid-cols-2 md:grid-cols-3 gap-8">
+    <div className="flex flex-col">
+      <h2 className="text-md text-white/50 font-extrabold mb-4">lINKS</h2>
+      <a href="/roadmap" className="hover:text-gray-300 transition-colors mb-2">Changelog</a>
+      <a href="/features" className="hover:text-gray-300 transition-colors mb-2">Features</a>
+      <a href="/pricing" className="hover:text-gray-300 transition-colors mb-2">Pricing</a>
+    </div>
+    <div className="flex flex-col">
+      <h2 className="text-md text-white/50 font-extrabold mb-4">SUPPORT</h2>
+      <a href="/security" className="hover:text-gray-300 transition-colors mb-2">Security</a>
+      <a href="/get-a-demo" className="hover:text-gray-300 transition-colors mb-2">Get a demo</a>
+      <a href="/contact-us" className="hover:text-gray-300 transition-colors">Contact Us</a>
+    </div>
+    <div className="flex flex-col">
+      <h2 className="text-md text-white/50 font-extrabold mb-4">LEGAL</h2>
+      <a href="/privacy-policy" className="hover:text-gray-300 transition-colors mb-2">Privacy Policy</a>
+      <a href="/terms-of-service" className="hover:text-gray-300 transition-colors mb-2">Terms of Use</a>
+      <a href="/disclosure" className="hover:text-gray-300 transition-colors">Disclosure</a>
+    </div>
+  </div>
+  <div className="container mx-auto px-4 mt-8 flex flex-col md:flex-row items-center justify-between">
+  <aside className="flex items-center gap-[2px]">
         <p className="text-3xl font-bold ">Nexus</p>
         <Image
           src="/logo.png"
@@ -262,22 +282,22 @@ export default function Home() {
         />
         <p className="text-3xl font-bold ">Flow</p>
       </aside>
-      <p className="text-sm">&copy; 2023 NexusFlow. All rights reserved.</p>
+    <div className="flex space-x-4">
+      <a href="/contact" className="hover:text-gray-300 transition-colors">
+        <MailCheckIcon />
+      </a>
+      <a href="/linkedin" className="hover:text-gray-300 transition-colors">
+        <LinkedinIcon />
+      </a>
+      <a href="/twitter" className="hover:text-gray-300 transition-colors">
+        <Twitter />
+      </a>
     </div>
-    <div className="flex flex-col items-center md:items-start">
-    <h2 className="text-md font-">LINKS</h2>
-
-      <a href="/login" className="text-white hover:text-gray-300 transition-colors mb-2">Login</a>
-      <a href="/pricing" className="text-white hover:text-gray-300 transition-colors">Pricing</a>
-    </div>
-    <div className="flex flex-col items-center md:items-end ">
-    <h2 className="text-md font-bold">LEGAL</h2>
-
-      <a href="/terms-of-service" className="text-white hover:text-gray-300 transition-colors mb-2">Terms of Service</a>
-      <a href="/privacy-policy" className="text-white hover:text-gray-300 transition-colors">Privacy Policy</a>
-    </div>
+    <p className="text-sm mt-4 md:mt-0">&copy; 2024 NexusFlow. All rights reserved.</p>
   </div>
 </section>
+
+   
      
     </main>
   )
