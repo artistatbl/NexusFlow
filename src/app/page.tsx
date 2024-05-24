@@ -1,5 +1,6 @@
 import { CardBody, CardContainer, CardItem } from '@/components/global/3d-card'
 import { ContainerScroll } from '@/components/global/container-scroll-animation'
+import TextShimmer from '@/components/global/animated-shiny-text'
 import {
   Accordion,
   AccordionContent,
@@ -15,7 +16,7 @@ import { LampComponent } from '@/components/global/lamp'
 import Navbar from '@/components/global/navbar'
 import { Button } from '@/components/ui/button'
 import { clients, products } from '@/lib/constant'
-import { CheckIcon, LinkedinIcon, MailCheckIcon, Twitter } from 'lucide-react'
+import { ArrowRightIcon, CheckIcon, LinkedinIcon, MailCheckIcon, Twitter } from 'lucide-react'
 import Image from 'next/image'
 
 export default function Home() {
@@ -25,16 +26,17 @@ export default function Home() {
       <Navbar />
       <section className="h-screen w-full  bg-neutral-950 rounded-md  !overflow-visible relative flex flex-col items-center  antialiased">
         <div className="absolute inset-0  h-full w-full items-center px-5 py-24 [background:radial-gradient(125%_125%_at_50%_10%,#000_35%,#223_100%)]"></div>
-        <div className="flex flex-col ">
+        <div className="flex  items-center flex-col ">
       <ContainerScroll
         titleComponent={
           <>
-            <h1 className="text-4xl font-semibold text-black dark:text-white">
-              Unleash the power of <br />
-              <span className="text-4xl md:text-[6rem] font-bold mt-1 leading-none">
-                Scroll Animations
-              </span>
-            </h1>
+               <TextShimmer className="inline-flex items-center justify-center px-4 py-1 transition ease-out hover:text-neutral-600 hover:duration-300 hover:dark:text-neutral-400">
+          <span className="font-bold text-1xl">✨ Introducing Magic UI</span>
+          <ArrowRightIcon className="ml-1 size-3 transition-transform duration-300 ease-in-out group-hover:translate-x-0.5" />
+        </TextShimmer>
+                <h1 className="text-5xl md:text-8xl  bg-clip-text text-transparent bg-gradient-to-b from-white to-neutral-600 font-sans font-bold">
+                  Automate Your Work With Fuzzie
+                </h1>
           </>
         }
       >
@@ -245,9 +247,20 @@ export default function Home() {
         </AccordionContent>
       </AccordionItem>
     </Accordion>
-
-
       </section>
+
+      {/* get started */}
+      <section className="mt-20 mb-20 bg-blue-500 w-[60vw] p-10 rounded-xl">
+  <h1 className="text-4xl font-bold text-center mb-4">Ready to Dive In?</h1>
+  <p className="text-xl text-center mb-8">Start your journey with us and enhance your workflow!</p>
+  <div className="flex justify-center">
+    <button className="bg-black hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+      Get Started Now
+    </button>
+  </div>
+</section>
+
+
 
      
 
