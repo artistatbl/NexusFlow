@@ -18,24 +18,27 @@ import { Button } from '@/components/ui/button'
 import { clients, products } from '@/lib/constant'
 import { ArrowRightIcon, CheckIcon, LinkedinIcon, MailCheckIcon, Twitter } from 'lucide-react'
 import Image from 'next/image'
+import TopBanner from '@/components/global/banner'
 
 export default function Home() {
   //WIP: remove fault IMAge for home page
   return (
-    <main className="flex items-center justify-center flex-col">
+    
+    <main className="flex items-center justify-center flex-col bg-neutral-950  ">
+      {/* <TopBanner /> */}
       <Navbar />
-      <section className="h-screen w-full  bg-neutral-950 rounded-md  !overflow-visible relative flex flex-col items-center  antialiased">
+      <section className="h-screen w-full bg-white  dark:bg-neutral-950 rounded-md  !overflow-visible relative flex flex-col items-center  antialiased">
         <div className="absolute inset-0  h-full w-full items-center px-5 py-24 [background:radial-gradient(125%_125%_at_50%_10%,#000_35%,#223_100%)]"></div>
         <div className="flex  items-center flex-col ">
       <ContainerScroll
         titleComponent={
           <>
                <TextShimmer className="inline-flex items-center justify-center px-4 py-1 transition ease-out hover:text-neutral-600 hover:duration-300 hover:dark:text-neutral-400">
-          <span className="font-bold text-1xl">✨ Introducing Magic UI</span>
+          <span className="font-light text-2xl">✨ Introducing Magic UI</span>
           <ArrowRightIcon className="ml-1 size-3 transition-transform duration-300 ease-in-out group-hover:translate-x-0.5" />
         </TextShimmer>
                 <h1 className="text-5xl md:text-8xl  bg-clip-text text-transparent bg-gradient-to-b from-white to-neutral-600 font-sans font-bold">
-                  Automate Your Work With Fuzzie
+                  Automate Your Work With NexusFlow
                 </h1>
           </>
         }
@@ -67,11 +70,11 @@ export default function Home() {
 
       {/* <LampComponent /> */}
 
-      <section className="mt-[-50px]">
+      <section className="mt-[-50px]  bg:bg-neutral-950 dark:bg-neutral-950 ">
         <LampComponent />
-        <div className="flex flex-wrap items-center justify-center flex-col md:flex-row gap-8 -mt-72">
-          <CardContainer className="inter-var ">
-            <CardBody className="bg-gray-50 relative group/card  dark:hover:shadow-2xl dark:hover:shadow-neutral-500/[0.1] dark:bg-black dark:border-white/[0.2] border-black/[0.1] w-full md:!w-[350px] h-auto rounded-xl p-6 border">
+        <div className="flex flex-wrap items-center justify-center text-blue-500  flex-col md:flex-row gap-8 -mt-72">
+          <CardContainer className="inter-var border border-white rounded-xl">
+            <CardBody className="bg:bg-neutral-950  relative group/card  dark:hover:shadow-2xl dark:hover:shadow-neutral-500/[0.1] dark:bg-black dark:border-white/[0.2] border-black/[0.1] w-full md:!w-[350px] h-auto rounded-xl p-6 border">
               <CardItem
                 translateZ="50"
                 className="text-xl font-bold text-neutral-600 dark:text-white "
@@ -103,22 +106,22 @@ export default function Home() {
                 <CardItem
                   translateZ={20}
                   as="button"
-                  className="px-4 py-2 rounded-xl text-xs font-normal dark:text-white"
+                  className="px-4 py-2 rounded-xl text-xs font-normal dark:text-blue-500"
                 >
                   Try now →
                 </CardItem>
                 <CardItem
                   translateZ={20}
                   as="button"
-                  className="px-4 py-2 rounded-xl bg-black dark:bg-white dark:text-black text-white text-xs font-bold"
+                  className="px-4 py-2 rounded-xl bg-white  dark:bg-white dark:text-black text-black text-xs font-bold"
                 >
                   Get Started Now
                 </CardItem>
               </div>
             </CardBody>
           </CardContainer>
-          <CardContainer className="inter-var ">
-            <CardBody className="bg-gray-50 relative group/card  dark:hover:shadow-2xl dark:hover:shadow-neutral-500/[0.1] dark:bg-black dark:border-[#E2CBFF] border-black/[0.1] w-full md:!w-[350px] h-auto rounded-xl p-6 border">
+          <CardContainer className="inter-var border border-white rounded-xl">
+            <CardBody className="bg-bg-neutral-950 relative group/card  dark:hover:shadow-2xl dark:hover:shadow-neutral-500/[0.1] dark:bg-black dark:border-[#E2CBFF] border-black/[0.1] w-full md:!w-[350px] h-auto rounded-xl p-6 border">
               <CardItem
                 translateZ="50"
                 className="text-xl font-bold text-neutral-600 dark:text-white "
@@ -150,22 +153,22 @@ export default function Home() {
                 <CardItem
                   translateZ={20}
                   as="button"
-                  className="px-4 py-2 rounded-xl text-xs font-normal dark:text-white"
+                  className="px-4 py-2 rounded-xl text-xs font-normal dark:text-blue-500"
                 >
                   Try now →
                 </CardItem>
                 <CardItem
                   translateZ={20}
                   as="button"
-                  className="px-4 py-2 rounded-xl bg-black dark:bg-white dark:text-black text-white text-xs font-bold"
+                  className="px-4 py-2 rounded-xl bg-white  dark:bg-white dark:text-black text-black text-xs font-bold"
                 >
                   Get Started Now
                 </CardItem>
               </div>
             </CardBody>
           </CardContainer>
-          <CardContainer className="inter-var ">
-            <CardBody className="bg-gray-50 relative group/card  dark:hover:shadow-2xl dark:hover:shadow-neutral-500/[0.1] dark:bg-black dark:border-white/[0.2] border-black/[0.1] w-full md:!w-[350px] h-auto rounded-xl p-6 border">
+          <CardContainer className="inter-var border border-white rounded-xl">
+            <CardBody className="bg-bg-neutral-950 relative group/card  dark:hover:shadow-2xl dark:hover:shadow-neutral-500/[0.1] dark:bg-black dark:border-white/[0.2] border-black/[0.1] w-full md:!w-[350px] h-auto rounded-xl p-6 border">
               <CardItem
                 translateZ="50"
                 className="text-xl font-bold text-neutral-600 dark:text-white "
@@ -197,14 +200,14 @@ export default function Home() {
                 <CardItem
                   translateZ={20}
                   as="button"
-                  className="px-4 py-2 rounded-xl text-xs font-normal dark:text-white"
+                  className="px-4 py-2 rounded-xl text-xs font-normal dark:text-blue-500"
                 >
                   Try now →
                 </CardItem>
                 <CardItem
                   translateZ={20}
                   as="button"
-                  className="px-4 py-2 rounded-xl bg-black dark:bg-white dark:text-black text-white text-xs font-bold"
+                  className="px-4 py-2 rounded-xl bg-white  dark:bg-white dark:text-black text-black text-xs font-bold"
                 >
                   Get Started Now
                 </CardItem>
@@ -213,7 +216,7 @@ export default function Home() {
           </CardContainer>
         </div>
       </section>
-      <section className=" w-[80vw] items-start justify-start mb-10 ">
+      <section className=" w-[80vw] items-start justify-start mb-10 text-white">
 
         <h1 className="text-4xl md:text-6xl text-center  bg-clip-text text-transparent bg-gradient-to-b from-white to-neutral-600 font-sans font-bold mt-16">Frequently Asked Questions</h1>
         
