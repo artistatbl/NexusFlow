@@ -66,6 +66,9 @@
     --ring: 240 4.9% 83.9%;
   }
 }
+.logo-dark-mode {
+  filter: invert(100%);
+}
 
 @layer base {
   * {

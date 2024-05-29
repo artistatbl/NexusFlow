@@ -1,11 +1,11 @@
 import type { Metadata } from "next";
-import { DM_Sans } from "next/font/google";
+import { Plus_Jakarta_Sans } from "next/font/google";
 import { ThemeProvider } from "@/providers/theme-provider";
 
 import "./globals.css";
 import TopBanner from "@/components/global/banner";
 
-const font = DM_Sans({ subsets: ['latin'], weight: '400' })
+const font = Plus_Jakarta_Sans({ subsets: ['latin']});
 
 export const metadata: Metadata = {
   title: "NexusFlow",
