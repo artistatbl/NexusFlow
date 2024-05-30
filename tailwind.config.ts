@@ -119,6 +119,11 @@ const config = {
           from: { height: 'var(--radix-accordion-content-height)' },
           to: { height: '0' },
         },
+        "border-beam": {
+          "100%": {
+            "offset-distance": "100%",
+          },
+        },
         
       },
       animation: {
@@ -133,6 +138,8 @@ const config = {
         fourth: 'moveHorizontal 40s ease infinite',
         fifth: 'moveInCircle 20s ease infinite',
         shimmer: "shimmer 8s infinite",
+        "border-beam": "border-beam calc(var(--duration)*1s) infinite linear",
+
 
       },
     },

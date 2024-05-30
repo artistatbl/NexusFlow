@@ -19,6 +19,7 @@ import { clients, products } from '@/lib/constant'
 import { ArrowRightIcon, CheckIcon, LinkedinIcon, MailCheckIcon, Twitter } from 'lucide-react'
 import Image from 'next/image'
 import TopBanner from '@/components/global/banner'
+import { BorderBeam } from '@/components/global/border.beam'
 
 export default function Home() {
   //WIP: remove fault IMAge for home page
@@ -29,36 +30,49 @@ export default function Home() {
       <Navbar />
       <section className="h-screen w-full bg-white  dark:bg-neutral-950 rounded-md  !overflow-visible relative flex flex-col items-center  antialiased">
         <div className="absolute inset-0  h-full w-full items-center px-5 py-24 [background:radial-gradient(125%_125%_at_50%_10%,#000_35%,#223_100%)]"></div>
-        <div className="flex  items-center flex-col ">
-      <ContainerScroll
-        titleComponent={
-          <>
-               <TextShimmer className="inline-flex items-center justify-center px-4 py-1 transition ease-out hover:text-neutral-600 hover:duration-300 hover:dark:text-neutral-400">
-          <span className="font-light text-2xl">✨ Introducing Magic UI</span>
+        
+        <div className="relative flex h-full  w-full  flex-col items-center justify-center">
+
+
+      
+        
+               <TextShimmer className="inline-flex mb-4 items-center justify-center px-4 py-1 transition ease-out hover:text-neutral-600 hover:duration-300 hover:dark:text-neutral-400">
+          <span className="font-light text-1xl">✨ Introducing Magic UI</span>
           <ArrowRightIcon className="ml-1 size-3 transition-transform duration-300 ease-in-out group-hover:translate-x-0.5" />
         </TextShimmer>
-                <h1 className="text-5xl md:text-8xl  bg-clip-text text-transparent bg-gradient-to-b from-white to-neutral-600 font-sans font-bold">
+                <h1 className="text-4xl md:text-6xl text-center mb-10 bg-clip-text text-transparent bg-gradient-to-b from-white to-neutral-600 font-sans font-bold">
                   Automate Your Work With NexusFlow
-                </h1>
-          </>
-        }
-      >
-        <Image
+                </h1> 
+       
+        
+        
+    
+       
+    
+
+      <div className='relative rounded-xl shadow-xl'>
+
+      <Image
           src={`/banner.png`}
           alt="hero"
           height={720}
           width={1400}
-          className="mx-auto rounded-2xl object-cover h-full object-left-top"
+          className=" sm:w-[700px] md:w-[900px] lg:w-[1100px] xl:w-[1200px] 2xl:w-[1400px] rounded-[inherit] border border-white/50 object-contain shadow-lg dark:hidden"
           draggable={false}
         />
-      </ContainerScroll>
+
+
+        <BorderBeam size={200} duration={15} delay={0} />
+      </div>
+
+
       
 
+      </div>
 
 
 
-
-        </div>
+     
       </section>
       <InfiniteMovingCards
         className="md:mt-[18rem] mt-[-100px]"
