@@ -53,12 +53,12 @@ export default function Home() {
       <img
         src="/banner.png"
         alt="Hero Image"
-        className="hidden w-[1200px] rounded-[inherit] border object-contain shadow-lg dark:block"
+        className="hidden w-[1000px] rounded-[inherit] border object-contain shadow-lg dark:block"
       />
       <img
         src="/banner.png"
         alt="Hero Image"
-        className="block w-[1200px] rounded-[inherit] border object-contain shadow-lg dark:hidden"
+        className="block w-[1000px] rounded-[inherit] border object-contain shadow-lg dark:hidden"
       />
 
 
