@@ -18,7 +18,6 @@ import { Button } from '@/components/ui/button'
 import { clients, products } from '@/lib/constant'
 import { ArrowRightIcon, CheckIcon, LinkedinIcon, MailCheckIcon, Twitter } from 'lucide-react'
 import Image from 'next/image'
-import TopBanner from '@/components/global/banner'
 import { BorderBeam } from '@/components/global/border.beam'
 
 export default function Home() {
@@ -26,7 +25,6 @@ export default function Home() {
   return (
     
     <main className="flex items-center justify-center flex-col bg-neutral-950  ">
-      {/* <TopBanner /> */}
       <Navbar />
       <section className="h-screen w-full bg-white  dark:bg-neutral-950 rounded-md  !overflow-visible relative flex flex-col items-center  antialiased">
         <div className="absolute inset-0  h-full w-full items-center px-5 py-24 [background:radial-gradient(125%_125%_at_50%_10%,#000_35%,#223_100%)]"></div>
@@ -52,17 +50,19 @@ export default function Home() {
 
       <div className='relative rounded-xl shadow-xl'>
 
-      <Image
-          src={`/banner.png`}
-          alt="hero"
-          height={720}
-          width={1400}
-          className=" sm:w-[700px] md:w-[900px] lg:w-[1100px] xl:w-[1200px] 2xl:w-[1400px] rounded-[inherit] border border-white/50 object-contain shadow-lg dark:hidden"
-          draggable={false}
-        />
+      <img
+        src="/banner.png"
+        alt="Hero Image"
+        className="hidden w-[1200px] rounded-[inherit] border object-contain shadow-lg dark:block"
+      />
+      <img
+        src="/banner.png"
+        alt="Hero Image"
+        className="block w-[1200px] rounded-[inherit] border object-contain shadow-lg dark:hidden"
+      />
 
 
-        <BorderBeam size={200} duration={15} delay={0} />
+        <BorderBeam size={200} duration={12} delay={4} />
       </div>
 
 
@@ -82,7 +82,6 @@ export default function Home() {
       />
       {/* WIP */}
 
-      {/* <LampComponent /> */}
 
       <section className="mt-[-50px]  bg:bg-neutral-950 dark:bg-neutral-950 ">
         <LampComponent />
