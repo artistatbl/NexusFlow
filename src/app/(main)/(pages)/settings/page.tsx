@@ -1,6 +1,5 @@
 import React from 'react'
 import { User } from 'lucide-react'
-import ProfileForm from '@/components/forms/profile-form'
 
 const Settings = () => {
   return (
@@ -23,13 +22,6 @@ const Settings = () => {
         onUpload={uploadProfileImage}
       /> */}
 
-      <ProfileForm
-        user={1}
-      
-     
-
-      />
-      
     </div>
   </div>
   )

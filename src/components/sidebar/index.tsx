@@ -11,7 +11,7 @@ import {
 import { menuOptions } from '@/lib/constant'
 import clsx from 'clsx'
 import { Separator } from '@/components/ui/separator'
-import { Database, GitBranch, LucideMousePointerClick } from 'lucide-react'
+import { BellIcon, Database, GitBranch, LucideMousePointerClick } from 'lucide-react'
  import { ModeToggle } from '../global/mode-toggle'
  import Image from 'next/image'
 import { useTheme } from 'next-themes'
@@ -23,15 +23,20 @@ const MenuOptions = (props: Props) => {
   const {theme } = useTheme();
 
   return (
-    <nav className=" dark:bg-black h-full w-[90px] overflow-scroll  border-r border-justify-between flex items-center flex-col  gap-10 py-1 px-4">
+    <nav className=" dark:bg-black h-full w-[100px] overflow-scroll  border-r  flex items-center flex-col  gap-8 py-1 px-1">
       <div className="flex items-center justify-center flex-col gap-6">
+        {/* <div className="flex items-center justify-center gap-2"> */}
         <Link
           className="flex font-semibold  text-md items-center  flex-row "
           href="/"
         >
-<span className="text-md">NexusFlow</span>
+<span className="text-sm mt-1 px-4">NexusFlow</span>
           {/* image here maybe */}
         </Link>
+        {/* <BellIcon className="h-4 w-4"/> */}
+
+        {/* </div> */}
+
 
         <Separator   />
 

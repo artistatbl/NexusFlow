@@ -1,7 +1,7 @@
 'use client'
 import React, { useEffect } from 'react'
 import { ModeToggle } from '../global/mode-toggle'
-import { Book, Headphones, Search } from 'lucide-react'
+import { Search , CircleHelp, Bell} from 'lucide-react'
 import Templates from '../icons/cloud_download'
 import { Input } from '@/components/ui/input'
 
@@ -33,7 +33,7 @@ const InfoBar = (props: Props) => {
 //   }, [])
 
   return (
-    <div className="flex flex-row justify-end gap-6 items-center px-2 py-2 w-full dark:bg-black ">
+    <div className="flex flex-row justify-end gap-6 items-center px-2 py-2  w-full dark:bg-black ">
       {/* <span className="flex items-center gap-2 font-bold"> */}
         <p className="text-sm font-light  bg-cyan-100 p-2 rounded-xl text-black">Credits</p>
 
@@ -58,20 +58,20 @@ const InfoBar = (props: Props) => {
       <TooltipProvider>
         <Tooltip delayDuration={0}>
           <TooltipTrigger>
-            <Headphones />
+            <Bell />
           </TooltipTrigger>
           <TooltipContent>
-            <p>Contact Support</p>
+            <p>Notifications</p>
           </TooltipContent>
         </Tooltip>
       </TooltipProvider>
       <TooltipProvider>
         <Tooltip delayDuration={0}>
           <TooltipTrigger>
-            <Book />
+            <CircleHelp />
           </TooltipTrigger>
           <TooltipContent>
-            <p>Guide</p>
+            <p>Contact Support</p>
           </TooltipContent>
         </Tooltip>
       </TooltipProvider>

@@ -19,6 +19,16 @@ const config = {
     },
     extend: {
       colors: {
+        cream: '#F5F5F5',
+        gravel: '#4E4E4E',
+        iridium: '#3F3F3F',
+        orange: '#FFA947',
+        peach: '#FFE0BD',
+        platinum: '#E6E6E6',
+        ghost: '#CDCDCD',
+        grandis: '#FFC989',
+        porcelain: '#F1F1F1',
+        ironside: '#636363',
         border: 'hsl(var(--border))',
         input: 'hsl(var(--input))',
         ring: 'hsl(var(--ring))',
@@ -123,6 +133,7 @@ const config = {
           "100%": {
             "offset-distance": "100%",
           },
+         
         },
         
       },
@@ -137,6 +148,9 @@ const config = {
         third: 'moveInCircle 40s linear infinite',
         fourth: 'moveHorizontal 40s ease infinite',
         fifth: 'moveInCircle 20s ease infinite',
+        'caret-blink': 'caret-blink 1.25s ease-out infinite',
+        'open-sidebar': 'open-sidebar 0.2s ease-out',
+        'close-sidebar': 'close-sidebar 0.2s ease-out',
         shimmer: "shimmer 8s infinite",
         "border-beam": "border-beam calc(var(--duration)*1s) infinite linear",
 
