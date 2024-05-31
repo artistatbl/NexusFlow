@@ -23,17 +23,17 @@ const MenuOptions = (props: Props) => {
   const {theme } = useTheme();
 
   return (
-    <nav className=" dark:bg-black h-screen overflow-scroll  justify-between flex items-center flex-col  gap-10 py-8 px-2">
-      <div className="flex items-center justify-center flex-col gap-8">
+    <nav className=" dark:bg-black h-full w-[90px] overflow-scroll  border-r border-justify-between flex items-center flex-col  gap-10 py-1 px-4">
+      <div className="flex items-center justify-center flex-col gap-6">
         <Link
-          className="flex font-extrabold flex-row  "
+          className="flex font-semibold  text-md items-center  flex-row "
           href="/"
         >
-          NexusFlow
-
+<span className="text-md">NexusFlow</span>
           {/* image here maybe */}
         </Link>
 
+        <Separator   />
 
         <TooltipProvider>
           {menuOptions.map((menuItem) => (
@@ -44,7 +44,7 @@ const MenuOptions = (props: Props) => {
                     <Link
                       href={menuItem.href}
                       className={clsx(
-                        'group h-10 w-10 flex items-center justify-center  scale-[1.5] rounded-lg p-[3px]  cursor-pointer',
+                        'group h-10 w-10 flex items-center justify-center  scale-[1] rounded-lg p-[3px]  cursor-pointer',
                         {
                           'dark:bg-[#2F006B] bg-[#EEE0FF] ':
                             pathName === menuItem.href,
@@ -67,7 +67,7 @@ const MenuOptions = (props: Props) => {
             </ul>
           ))}
         </TooltipProvider>
-        <Separator />
+        <Separator  />
         <div className="flex items-center flex-col gap-9 dark:bg-[#353346]/30 py-4 px-2 rounded-full h-56 overflow-scroll border-[1px]">
           <div className="relative dark:bg-[#353346]/70 p-2 rounded-full dark:border-t-[2px] border-[1px] dark:border-t-[#353346] cursor-pointer">
             <LucideMousePointerClick
@@ -98,7 +98,7 @@ const MenuOptions = (props: Props) => {
           </div>
         </div>
       </div>
-      <div className="flex items-center justify-center flex-col gap-8">
+      <div className="flex items-center justify-center flex-col gap-4 mb-10">
         <ModeToggle />
       </div>
     </nav>
