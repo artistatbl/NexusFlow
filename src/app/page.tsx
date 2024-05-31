@@ -34,13 +34,16 @@ export default function Home() {
 
       
         
-               <TextShimmer className="inline-flex mb-4 items-center justify-center px-4 py-1 transition ease-out hover:text-neutral-600 hover:duration-300 hover:dark:text-neutral-400">
-          <span className="font-light text-1xl">✨ Introducing Magic UI</span>
+               <TextShimmer className="inline-flex mt-32 items-center justify-center px-4 py-1 transition ease-out hover:text-neutral-600 hover:duration-300 hover:dark:text-neutral-400">
+          <span className="font-light text-sm">✨ Introducing Magic UI</span>
           <ArrowRightIcon className="ml-1 size-3 transition-transform duration-300 ease-in-out group-hover:translate-x-0.5" />
         </TextShimmer>
-                <h1 className="text-4xl md:text-6xl text-center mb-10 bg-clip-text text-transparent bg-gradient-to-b from-white to-neutral-600 font-sans font-bold">
+                <h1 className="text-3xl md:text-5xl text-center bg-clip-text text-transparent bg-gradient-to-b from-white to-neutral-600 font-sans font-bold">
                   Automate Your Work With NexusFlow
                 </h1> 
+                <p className="text-xs text-center  mb-5 text-white/50">
+                  powerful, easy-to-use development tool for web and mobile. automate your work.
+                </p>
        
         
         
@@ -50,14 +53,18 @@ export default function Home() {
 
       <div className='relative rounded-xl shadow-xl'>
 
-      <img
+      <Image
         src="/banner.png"
         alt="Hero Image"
+        width={1000}
+        height={720}
         className="hidden w-[1000px] rounded-[inherit] border object-contain shadow-lg dark:block"
       />
-      <img
+      <Image
         src="/banner.png"
         alt="Hero Image"
+        width={1000}
+        height={720}
         className="block w-[1000px] rounded-[inherit] border object-contain shadow-lg dark:hidden"
       />
 
