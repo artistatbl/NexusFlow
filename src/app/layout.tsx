@@ -4,6 +4,7 @@ import { ThemeProvider } from "@/providers/theme-provider";
 import { ClerkProvider } from "@clerk/nextjs";
 import "./globals.css";
 import TopBanner from "@/components/global/banner";
+import { Toaster } from "@/components/ui/toaster";
 
 const font = Plus_Jakarta_Sans({ subsets: ['latin']});
 
@@ -24,7 +25,7 @@ export default function RootLayout({
         <ThemeProvider
         
           attribute="class"
-          defaultTheme="light"
+          defaultTheme="dark"
           enableSystem
           disableTransitionOnChange
         >
@@ -32,6 +33,8 @@ export default function RootLayout({
           {children}
 
           {/* <TopBanner /> */}
+
+          <Toaster />
 
         </ThemeProvider>
       </body>

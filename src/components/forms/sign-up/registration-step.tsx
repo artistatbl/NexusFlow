@@ -1,8 +1,8 @@
 'use client'
-import { useAuthContextHook } from '@/content/use-auth-content'
+import { useAuth } from '@/content/use-auth-content'
 import React, { useState } from 'react'
 import { useFormContext } from 'react-hook-form'
-import TypeSelectionForm from './type-selection-form'
+import TypeSelectionForm from './type-selection-step'
 import dynamic from 'next/dynamic'
 import { LoaderCircle } from 'lucide-react'
 
@@ -10,7 +10,7 @@ const LoaderComponent = ({ isLoading = false }: { isLoading?: boolean }) => {
   return isLoading ? <LoaderCircle /> : null;
 };
 
-const DetailForm = dynamic(() => import('./account-details-form'), {
+const DetailForm = dynamic(() => import('./account-detail-form'), {
   ssr: false,
   loading: LoaderComponent,
 })
@@ -29,7 +29,7 @@ const RegistrationFormStep = (props: Props) => {
     formState: { errors },
     setValue,
   } = useFormContext()
-  const { currentStep } = useAuthContextHook()
+  const { currentStep } = useAuth()
   const [onOTP, setOnOTP] = useState<string>('')
   const [onUserType, setOnUserType] = useState<'owner' | 'student'>('owner')
 
@@ -63,6 +63,4 @@ const RegistrationFormStep = (props: Props) => {
   return <div>RegistrationFormStep</div>
 }
 
-export default RegistrationFormStep
-export default RegistrationFormStep
 export default RegistrationFormStep

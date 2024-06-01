@@ -1,4 +1,4 @@
-import OTPInput from '@/components/otp'
+import OTPInput from '@/components/opt'
 import React from 'react'
 
 type Props = {

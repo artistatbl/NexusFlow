@@ -7,7 +7,6 @@ import { currentUser, redirectToSignIn } from '@clerk/nextjs'
 export const onCompleteUserRegistration = async (
   fullname: string,
   clerkId: string,
-  email: string,
   type: string
 ) => {
   try {
@@ -15,7 +14,6 @@ export const onCompleteUserRegistration = async (
       data: {
         fullname,
         clerkId,
-        email,
         type,
         subscription: {
           create: {},

@@ -1,7 +1,7 @@
 'use client'
 import { Loader } from '@/components/global/loader'
 import { AuthProvider } from '@/content/use-auth-content'
-import { useSignUpForm } from '@/hooks/sign-up/use-sign-up'
+import { useSignInForm } from '@/hooks/sign-in/use-sign-in'
 import React from 'react'
 import { FormProvider } from 'react-hook-form'
 
@@ -9,8 +9,8 @@ type Props = {
   children: React.ReactNode
 }
 
-const SignUpFormProvider = ({ children }: Props) => {
-  const { methods, onHandleSubmit, loading } = useSignUpForm()
+const SignInFormProvider = ({ children }: Props) => {
+  const { methods, onHandleSubmit, loading } = useSignInForm()
 
   return (
     <AuthProvider>
@@ -28,4 +28,4 @@ const SignUpFormProvider = ({ children }: Props) => {
   )
 }
 
-export default SignUpFormProvider
+export default SignInFormProvider

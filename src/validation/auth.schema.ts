@@ -20,13 +20,13 @@ export const UserRegistrationSchema: ZodType<UserRegistrationProps> = z
     confirmEmail: z.string().email(),
     password: z
       .string()
-      .min(8, { message: 'Your password must be atleast 8 characters long' })
+      .min(8, { message: 'Your password must be at least 8 characters long' })
       .max(64, {
-        message: 'Your password can not be longer then 64 characters long',
+        message: 'Your password cannot be longer than 64 characters long',
       })
       .refine(
-        (value) => /^[a-zA-Z0-9_.-]*$/.test(value ?? ''),
-        'password should contain only alphabets and numbers'
+        (value) => /^[a-zA-Z0-9_.\-!@#$%^&*(),.?":{}|<>]*$/.test(value ?? '') && /[!@#$%^&*(),.?":{}|<>]/.test(value),
+        'Password should contain only alphabets, numbers, and at least one special character'
       ),
     confirmPassword: z.string(),
     otp: z.string().min(6, { message: 'You must enter a 6 digit code' }),
@@ -64,13 +64,13 @@ export const ChangePasswordSchema: ZodType<ChangePasswordProps> = z
   .object({
     password: z
       .string()
-      .min(8, { message: 'Your password must be atleast 8 characters long' })
+      .min(8, { message: 'Your password must be at least 8 characters long' })
       .max(64, {
-        message: 'Your password can not be longer then 64 characters long',
+        message: 'Your password cannot be longer than 64 characters long',
       })
       .refine(
-        (value) => /^[a-zA-Z0-9_.-]*$/.test(value ?? ''),
-        'password should contain only alphabets and numbers'
+        (value) => /^[a-zA-Z0-9_.\-!@#$%^&*(),.?":{}|<>]*$/.test(value ?? '') && /[!@#$%^&*(),.?":{}|<>]/.test(value),
+        'Password should contain only alphabets, numbers, and at least one special character'
       ),
     confirmPassword: z.string(),
   })

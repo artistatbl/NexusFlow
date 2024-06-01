@@ -29,13 +29,7 @@ export const useSignUpForm = () => {
     password: string,
     onNext: React.Dispatch<React.SetStateAction<number>>
   ) => {
-    if (!isLoaded) {
-      toast({
-        title: 'Error',
-        description: 'Service not ready',
-      });
-      return;
-    }
+    if (!isLoaded) return
 
     try {
       await signUp.create({
@@ -47,23 +41,16 @@ export const useSignUpForm = () => {
 
       onNext((prev) => prev + 1)
     } catch (error: any) {
-      const errorMessage = error?.errors?.[0]?.longMessage || 'An unexpected error occurred';
       toast({
         title: 'Error',
-        description: errorMessage,
-      });
+        description: error.errors[0].longMessage,
+      })
     }
   }
 
   const onHandleSubmit = methods.handleSubmit(
     async (values: UserRegistrationProps) => {
-      if (!isLoaded) {
-        toast({
-          title: 'Error',
-          description: 'Service not ready',
-        });
-        return;
-      }
+      if (!isLoaded) return
 
       try {
         setLoading(true)
@@ -72,11 +59,7 @@ export const useSignUpForm = () => {
         })
 
         if (completeSignUp.status !== 'complete') {
-          toast({
-            title: 'Error',
-            description: 'Something went wrong!',
-          });
-          return;
+          return { message: 'Something went wrong!' }
         }
 
         if (completeSignUp.status == 'complete') {
@@ -84,8 +67,8 @@ export const useSignUpForm = () => {
 
           const registered = await onCompleteUserRegistration(
             values.fullname,
-            values.email,
             signUp.createdUserId,
+		 
             values.type
           )
 
@@ -94,6 +77,7 @@ export const useSignUpForm = () => {
               session: completeSignUp.createdSessionId,
             })
 
+            setLoading(false)
             router.push('/dashboard')
           }
 
@@ -105,13 +89,10 @@ export const useSignUpForm = () => {
           }
         }
       } catch (error: any) {
-        const errorMessage = error?.errors?.[0]?.longMessage || 'An unexpected error occurred';
         toast({
           title: 'Error',
-          description: errorMessage,
-        });
-      } finally {
-        setLoading(false);
+          description: error.errors[0].longMessage,
+        })
       }
     }
   )
