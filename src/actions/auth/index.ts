@@ -30,16 +30,14 @@ export const onCompleteUserRegistration = async (
       return { status: 200, user: registered }
     }
   } catch (error) {
-    return { status: 400}
+    return { status: 400 }
   }
 }
 
 export const onLoginUser = async () => {
   const user = await currentUser()
-  if (!user) {
-    redirectToSignIn()
-    return; // Ensure function exits after redirection
-  } else {
+  if (!user) redirectToSignIn()
+  else {
     try {
       const authenticated = await db.user.findUnique({
         where: {
@@ -53,7 +51,7 @@ export const onLoginUser = async () => {
       })
       if (authenticated) {
         //const domains = await onGetAllAccountDomains()
-       // return { status: 200, user: authenticated, domain: domains?.domains }
+        //return { status: 200, user: authenticated, domain: domains?.domains }
       }
     } catch (error) {
       return { status: 400 }
