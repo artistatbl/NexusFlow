@@ -69,58 +69,6 @@ const config = {
         sm: 'calc(var(--radius) - 4px)',
       },
       keyframes: {
-        scroll: {
-          to: {
-            transform: 'translate(calc(-50% - 0.5rem))',
-          },
-          // shimmer: {
-          //   "0%, 90%, 100%": "background-position: calc(-100% - var(--shimmer-width)) 0;",
-          //   "30%, 60%": "background-position: calc(100% + var(--shimmer-width)) 0;",
-          // },
-        },
-        spotlight: {
-          '0%': {
-            opacity: '0',
-            transform: 'translate(-72%, -62%) scale(0.5)',
-          },
-          '100%': {
-            opacity: '1',
-            transform: 'translate(-50%,-40%) scale(1)',
-          },
-        },
-        moveHorizontal: {
-          '0%': {
-            transform: 'translateX(-50%) translateY(-10%)',
-          },
-          '50%': {
-            transform: 'translateX(50%) translateY(10%)',
-          },
-          '100%': {
-            transform: 'translateX(-50%) translateY(-10%)',
-          },
-        },
-        moveInCircle: {
-          '0%': {
-            transform: 'rotate(0deg)',
-          },
-          '50%': {
-            transform: 'rotate(180deg)',
-          },
-          '100%': {
-            transform: 'rotate(360deg)',
-          },
-        },
-        moveVertical: {
-          '0%': {
-            transform: 'translateY(-50%)',
-          },
-          '50%': {
-            transform: 'translateY(50%)',
-          },
-          '100%': {
-            transform: 'translateY(-50%)',
-          },
-        },
         'accordion-down': {
           from: { height: '0' },
           to: { height: 'var(--radix-accordion-content-height)' },
@@ -129,46 +77,34 @@ const config = {
           from: { height: 'var(--radix-accordion-content-height)' },
           to: { height: '0' },
         },
-        "border-beam": {
-          "100%": {
-            "offset-distance": "100%",
-          },
-         
+        'caret-blink': {
+          '0%,70%,100%': { opacity: '1' },
+          '20%,50%': { opacity: '0' },
         },
-        
+        'open-sidebar': {
+          from: { width: '60px' },
+          to: { width: '300px' },
+        },
+        'close-sidebar': {
+          from: { width: '300px' },
+          to: { width: '60px' },
+        },
+        'fade-in': {
+          from: { opacity: '0' },
+          to: { opacity: '1' },
+        },
       },
       animation: {
-        scroll:
-          'scroll var(--animation-duration, 40s) var(--animation-direction, forwards) linear infinite',
-        spotlight: 'spotlight 2s ease .75s 1 forwards',
         'accordion-down': 'accordion-down 0.2s ease-out',
         'accordion-up': 'accordion-up 0.2s ease-out',
-        first: 'moveVertical 30s ease infinite',
-        second: 'moveInCircle 20s reverse infinite',
-        third: 'moveInCircle 40s linear infinite',
-        fourth: 'moveHorizontal 40s ease infinite',
-        fifth: 'moveInCircle 20s ease infinite',
         'caret-blink': 'caret-blink 1.25s ease-out infinite',
         'open-sidebar': 'open-sidebar 0.2s ease-out',
         'close-sidebar': 'close-sidebar 0.2s ease-out',
-        shimmer: "shimmer 8s infinite",
-        "border-beam": "border-beam calc(var(--duration)*1s) infinite linear",
-
-
+        'fade-in': 'fade-in 0.2s ease-out',
       },
     },
   },
   plugins: [require('tailwindcss-animate')],
 } satisfies Config
-
-// function addVariablesForColors({ addBase, theme }: any) {
-//   let allColors = flattenColorPalette(theme('colors'))
-//   let newVars = Object.fromEntries(
-//     Object.entries(allColors).map(([key, val]) => [`--${key}`, val])
-//   )
-//   addBase({
-//     ':root': newVars,
-//   })
-// }
 
 export default config

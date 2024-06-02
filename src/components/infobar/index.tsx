@@ -2,7 +2,6 @@
 import React, { useEffect } from 'react'
 import { ModeToggle } from '../global/mode-toggle'
 import { Search , CircleHelp, Bell} from 'lucide-react'
-import Templates from '../icons/cloud_download'
 import { Input } from '@/components/ui/input'
 
 import {
@@ -11,6 +10,8 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from '@/components/ui/tooltip'
+import { Avatar, AvatarFallback, AvatarImage } from '../ui/avatar'
+import { UserButton } from '@clerk/nextjs'
 // import { UserButton } from '@clerk/nextjs'
 // import { useBilling } from '@/providers/billing-provider'
 // import { onPaymentDetails } from '@/app/(main)/(pages)/billing/_actions/payment-connecetions'
@@ -33,7 +34,7 @@ const InfoBar = (props: Props) => {
 //   }, [])
 
   return (
-    <div className="flex flex-row justify-end gap-6 items-center px-2 py-2  w-full dark:bg-black ">
+    <div className="flex flex-row sticky justify-end gap-6 items-center px-2 py-2  w-full dark:bg-black ">
       {/* <span className="flex items-center gap-2 font-bold"> */}
         <p className="text-sm font-light  bg-cyan-100 p-2 rounded-xl text-black">Credits</p>
 
@@ -75,7 +76,7 @@ const InfoBar = (props: Props) => {
           </TooltipContent>
         </Tooltip>
       </TooltipProvider>
-      {/* <UserButton /> */}
+      <UserButton />
     </div>
   )
 }
