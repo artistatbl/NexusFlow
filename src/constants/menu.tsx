@@ -23,12 +23,12 @@ export const SIDE_BAR_MENU: SIDE_BAR_MENU_PROPS[] = [
   {
     label: 'Conversations',
     icon: <ChatIcon />,
-    path: 'conversation',
+    path: 'billing',
   },
   {
-    label: 'Integrations',
+    label: 'connections',
     icon: <IntegrationsIcon />,
-    path: 'integration',
+    path: 'connections',
   },
   {
     label: 'Settings',
