@@ -1,11 +1,12 @@
 import { SIDE_BAR_MENU } from '@/constants/menu'
 
 import React from 'react'
+import { Separator } from '@/components/ui/separator'
 
 import { LogOut, MonitorSmartphone } from 'lucide-react'
 import { MenuLogo } from '@/components/icons/menu-logo'
 import MenuItem from './menu-item'
-// import DomainMenu from './domain-menu'
+import DomainMenu from './domain-menu'
 
 type MinMenuProps = {
   onShrink(): void
@@ -28,12 +29,21 @@ export const MinMenu = ({
   domains,
 }: MinMenuProps) => {
   return (
-    <div className="p-3 flex flex-col items-center h-full">
+    <div className="p-3 flex flex-col items-center  h-full">
+
+      {/* <Separator /> */}
       <span className="animate-fade-in opacity-0 delay-300 fill-mode-forwards cursor-pointer">
         <MenuLogo onClick={onShrink} />
       </span>
-      <div className="animate-fade-in opacity-0 delay-300 fill-mode-forwards flex flex-col justify-between h-full pt-10">
-        <div className="flex flex-col">
+<Separator className='mt-4' />
+    
+      <div className="animate-fade-in opacity-0 delay-300 fill-mode-forwards flex flex-col justify-between h-full pt-4 ">
+
+     
+
+
+
+        <div className="flex flex-col mb-10 ">
           {SIDE_BAR_MENU.map((menu, key) => (
             <MenuItem
               size="min"
@@ -42,11 +52,20 @@ export const MinMenu = ({
               current={current}
             />
           ))}
-          {/* <DomainMenu
+
+
+
+          <DomainMenu
             min
             domains={domains}
-          /> */}
+          />
+
+
         </div>
+
+ 
+
+
         <div className="flex flex-col">
           <MenuItem
             size="min"

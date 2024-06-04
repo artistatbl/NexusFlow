@@ -1,4 +1,14 @@
-import { CardBody, CardContainer, CardItem } from '@/components/global/3d-card'
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from '@/components/ui/card'
+import clsx from 'clsx'
+import Link from 'next/link'
+
 import { ContainerScroll } from '@/components/global/container-scroll-animation'
 import TextShimmer from '@/components/global/animated-shiny-text'
 import {
@@ -8,6 +18,7 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion"
 
+import { pricingCards } from '@/constants/landing-page'
 
 
 import { InfiniteMovingCards } from '@/components/global/infinite-moving-cards'
@@ -16,7 +27,7 @@ import { LampComponent } from '@/components/global/lamp'
 import Navbar from '@/components/global/navbar'
 import { Button } from '@/components/ui/button'
 import { clients, products } from '@/lib/constant'
-import { ArrowRightIcon, CheckIcon, LinkedinIcon, MailCheckIcon, Twitter } from 'lucide-react'
+import { ArrowRightIcon, Check, LinkedinIcon, MailCheckIcon, Twitter } from 'lucide-react'
 import Image from 'next/image'
 import { BorderBeam } from '@/components/global/border.beam'
 
@@ -34,14 +45,14 @@ export default function Home() {
 
       
         
-               <TextShimmer className="inline-flex mt-32 items-center justify-center px-4 py-1 transition ease-out hover:text-neutral-600 hover:duration-300 hover:dark:text-neutral-400">
+               <TextShimmer className="inline-flex mt-24 mb-10 items-center justify-center px-4 py-1 transition ease-out hover:text-neutral-600 hover:duration-300 hover:dark:text-neutral-400">
           <span className="font-light text-sm">✨ Introducing Magic UI</span>
           <ArrowRightIcon className="ml-1 size-3 transition-transform duration-300 ease-in-out group-hover:translate-x-0.5" />
         </TextShimmer>
                 <h1 className="text-3xl md:text-5xl text-center bg-clip-text text-transparent bg-gradient-to-b from-white to-neutral-600 font-sans font-bold">
                   Automate Your Work With NexusFlow
                 </h1> 
-                <p className="text-xs text-center  mb-5 text-white/50">
+                <p className="text-md text-center  mb-5 text-white/50">
                   powerful, easy-to-use development tool for web and mobile. automate your work.
                 </p>
        
@@ -53,19 +64,26 @@ export default function Home() {
 
       <div className='relative rounded-xl shadow-xl'>
 
+       <Image
+        src="/banner.png"
+        alt="Hero Image"
+        objectFit="contain"
+        //layout="responsive"
+        width={1000}
+        height={720}
+        className="hidden w-[1000px] rounded-[inherit] border object-contain shadow-lg dark:block custom-image-size"
+      /> 
+
+      
+
       <Image
         src="/banner.png"
         alt="Hero Image"
+      
+        //layout="responsive"
         width={1000}
         height={720}
-        className="hidden w-[1000px] rounded-[inherit] border object-contain shadow-lg dark:block"
-      />
-      <Image
-        src="/banner.png"
-        alt="Hero Image"
-        width={1000}
-        height={720}
-        className="block w-[1000px] rounded-[inherit] border object-contain shadow-lg dark:hidden"
+        className="block w-[1000px] rounded-[inherit] border object-contain shadow-lg dark:hidden  custom-image-size"
       />
 
 
@@ -81,164 +99,80 @@ export default function Home() {
 
      
       </section>
-      <InfiniteMovingCards
+      
+      {/* <InfiniteMovingCards
         className="md:mt-[18rem] mt-[-100px]"
         items={clients}
         direction="right"
         speed="slow"
-      />
+      />  */}
+
+
+
       {/* WIP */}
 
+      <section className="flex justify-center items-center flex-col gap-4 mt-10">
+        <h2 className="text-4xl md:text-6xl lg:text-7xl text-center bg-clip-text text-transparent bg-gradient-to-b from-white to-neutral-600 font-bold">Choose what fits you right</h2>
+        <p className="text-center text-sm md:text-base lg:text-lg max-w-lg mx-auto text-white/50">
+          Our straightforward pricing plans are tailored to meet your needs. If
+          {" you're"} not ready to commit you can get started for free.
+        </p>
+      </section> 
 
-      <section className="mt-[-50px]  bg:bg-neutral-950 dark:bg-neutral-950 ">
-        <LampComponent />
-        <div className="flex flex-wrap items-center justify-center text-blue-500  flex-col md:flex-row gap-8 -mt-72">
-          <CardContainer className="inter-var border border-white rounded-xl">
-            <CardBody className="bg:bg-neutral-950  relative group/card  dark:hover:shadow-2xl dark:hover:shadow-neutral-500/[0.1] dark:bg-black dark:border-white/[0.2] border-black/[0.1] w-full md:!w-[350px] h-auto rounded-xl p-6 border">
-              <CardItem
-                translateZ="50"
-                className="text-xl font-bold text-neutral-600 dark:text-white "
-              >
-                Hobby
-                <h2 className="text-6xl ">$0</h2>
-              </CardItem>
-              <CardItem
-                translateZ="60"
-                className="text-neutral-500 text-sm max-w-sm mt-2 dark:text-neutral-300"
-              >
-                Get a glimpse of what our software is capable of. Just a heads
-                up {"you'll"} never leave us after this!
-                <ul className="my-4 flex flex-col gap-2">
-                  <li className="flex items-center gap-2">
-                    <CheckIcon />3 Free automations
-                  </li>
-                  <li className="flex items-center gap-2">
-                    <CheckIcon />
-                    100 tasks per month
-                  </li>
-                  <li className="flex items-center gap-2">
-                    <CheckIcon />
-                    Two-step Actions
-                  </li>
-                </ul>
-              </CardItem>
-              <div className="flex justify-between items-center mt-8">
-                <CardItem
-                  translateZ={20}
-                  as="button"
-                  className="px-4 py-2 rounded-xl text-xs font-normal dark:text-blue-500"
-                >
-                  Try now →
-                </CardItem>
-                <CardItem
-                  translateZ={20}
-                  as="button"
-                  className="px-4 py-2 rounded-xl bg-white  dark:bg-white dark:text-black text-black text-xs font-bold"
-                >
-                  Get Started Now
-                </CardItem>
+      <section>
+
+    
+
+        <div className="flex  justify-center gap-4 flex-wrap mt-6 ">
+
+        {pricingCards.map((card) => (
+          <Card
+            key={card.title}
+            className={clsx('w-[300px] bg-neutral-900 flex flex-col  justify-between', {
+              'border-2 border-primary': card.title === 'Unlimited',
+            })}
+          >
+            <CardHeader>
+              <CardTitle className="text-orange">{card.title}</CardTitle>
+              <CardDescription className="text-white/50">
+                {pricingCards.find((c) => c.title === card.title)?.description}
+              </CardDescription>
+            </CardHeader>
+            <CardContent>
+              <span className="text-4xl font-bold text-white">{card.price}</span>
+              <span className="text-white/50">
+                <span>/ month</span>
+              </span>
+            </CardContent>
+            <CardFooter className="flex flex-col items-start text-white/50 gap-4">
+              <div>
+                {card.features.map((feature) => (
+                  <div
+                    key={feature}
+                    className="flex gap-2 text-white/50"
+                  >
+                    <Check />
+                    <p>{feature}</p>
+                  </div>
+                ))}
               </div>
-            </CardBody>
-          </CardContainer>
-          <CardContainer className="inter-var border border-white rounded-xl">
-            <CardBody className="bg-bg-neutral-950 relative group/card  dark:hover:shadow-2xl dark:hover:shadow-neutral-500/[0.1] dark:bg-black dark:border-[#E2CBFF] border-black/[0.1] w-full md:!w-[350px] h-auto rounded-xl p-6 border">
-              <CardItem
-                translateZ="50"
-                className="text-xl font-bold text-neutral-600 dark:text-white "
+              <Link
+                href={`/dashboard?plan=${card.title}`}
+                className="bg-[#f3d299] border-orange hover:bg-neutral-700 border-2 p-2 w-full text-center text-white font-bold rounded-md"
               >
-                Pro Plan
-                <h2 className="text-6xl ">$29</h2>
-              </CardItem>
-              <CardItem
-                translateZ="60"
-                className="text-neutral-500 text-sm max-w-sm mt-2 dark:text-neutral-300"
-              >
-                Get a glimpse of what our software is capable of. Just a heads
-                up {"you'll"} never leave us after this!
-                <ul className="my-4 flex flex-col gap-2">
-                  <li className="flex items-center gap-2">
-                    <CheckIcon />3 Free automations
-                  </li>
-                  <li className="flex items-center gap-2">
-                    <CheckIcon />
-                    100 tasks per month
-                  </li>
-                  <li className="flex items-center gap-2">
-                    <CheckIcon />
-                    Two-step Actions
-                  </li>
-                </ul>
-              </CardItem>
-              <div className="flex justify-between items-center mt-8">
-                <CardItem
-                  translateZ={20}
-                  as="button"
-                  className="px-4 py-2 rounded-xl text-xs font-normal dark:text-blue-500"
-                >
-                  Try now →
-                </CardItem>
-                <CardItem
-                  translateZ={20}
-                  as="button"
-                  className="px-4 py-2 rounded-xl bg-white  dark:bg-white dark:text-black text-black text-xs font-bold"
-                >
-                  Get Started Now
-                </CardItem>
-              </div>
-            </CardBody>
-          </CardContainer>
-          <CardContainer className="inter-var border border-white rounded-xl">
-            <CardBody className="bg-bg-neutral-950 relative group/card  dark:hover:shadow-2xl dark:hover:shadow-neutral-500/[0.1] dark:bg-black dark:border-white/[0.2] border-black/[0.1] w-full md:!w-[350px] h-auto rounded-xl p-6 border">
-              <CardItem
-                translateZ="50"
-                className="text-xl font-bold text-neutral-600 dark:text-white "
-              >
-                Unlimited
-                <h2 className="text-6xl ">$99</h2>
-              </CardItem>
-              <CardItem
-                translateZ="60"
-                className="text-neutral-500 text-sm max-w-sm mt-2 dark:text-neutral-300"
-              >
-                Get a glimpse of what our software is capable of. Just a heads
-                up {"you'll"} never leave us after this!
-                <ul className="my-4 flex flex-col gap-2">
-                  <li className="flex items-center gap-2">
-                    <CheckIcon />3 Free automations
-                  </li>
-                  <li className="flex items-center gap-2">
-                    <CheckIcon />
-                    100 tasks per month
-                  </li>
-                  <li className="flex items-center gap-2">
-                    <CheckIcon />
-                    Two-step Actions
-                  </li>
-                </ul>
-              </CardItem>
-              <div className="flex justify-between items-center mt-8">
-                <CardItem
-                  translateZ={20}
-                  as="button"
-                  className="px-4 py-2 rounded-xl text-xs font-normal dark:text-blue-500"
-                >
-                  Try now →
-                </CardItem>
-                <CardItem
-                  translateZ={20}
-                  as="button"
-                  className="px-4 py-2 rounded-xl bg-white  dark:bg-white dark:text-black text-black text-xs font-bold"
-                >
-                  Get Started Now
-                </CardItem>
-              </div>
-            </CardBody>
-          </CardContainer>
-        </div>
+                Get Started
+              </Link>
+            </CardFooter>
+          </Card>
+        ))}
+      </div>
+
+
       </section>
+
       <section className=" w-[80vw] items-start justify-start mb-10 text-white">
 
-        <h1 className="text-4xl md:text-6xl text-center  bg-clip-text text-transparent bg-gradient-to-b from-white to-neutral-600 font-sans font-bold mt-16">Frequently Asked Questions</h1>
+        <h1 className="text-4xl md:text-6xl text-center  bg-clip-text text-transparent bg-gradient-to-b from-white to-neutral-600  font-bold mt-16">Frequently Asked Questions</h1>
         
 
       <Accordion type="single" collapsible className="w-full">

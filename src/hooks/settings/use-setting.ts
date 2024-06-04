@@ -4,10 +4,6 @@ import { useRouter } from 'next/navigation'
 import { useEffect, useState } from 'react'
 
 
-
-
-
-
 export const useThemeMode = () => {
 	const { setTheme, theme } = useTheme()
 	return {
