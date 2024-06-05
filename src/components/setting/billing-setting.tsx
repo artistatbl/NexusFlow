@@ -30,6 +30,7 @@ const BillingSettings = async (props: Props) => {
         <Modal
           title="Choose A Plan"
           description="Tell us about yourself! What do you do? Let's tailor your experience so it best suits you."
+          onClose={() => {}}
           trigger={
             plan && (plan === 'PRO' || plan === 'ULTIMATE') ? (
               <Image

@@ -17,6 +17,7 @@ type Props = {
   description: string
   type?: 'Integration'
   logo?: string
+  onClose: () => void; // Added onClose prop
 }
 
 const Modal = ({
@@ -26,6 +27,7 @@ const Modal = ({
   description,
   type,
   logo,
+  onClose, // Added onClose prop
 }: Props) => {
   switch (type) {
     case 'Integration':

@@ -2,7 +2,16 @@
 import { db } from '@/lib/db'
 import { clerkClient, currentUser } from '@clerk/nextjs'
 
-export const onIntegrateDomain = async (domain: string, icon: string) => {
+
+interface DomainData {
+  name: string
+  description?: string
+  subdomain: string
+  icon?: string
+  custom_domain?: string
+}
+
+export const onIntegrateDomain = async (domainData: DomainData) => {
   const user = await currentUser()
   if (!user) return { status: 400, message: "User not found." }
 
@@ -40,7 +49,7 @@ export const onIntegrateDomain = async (domain: string, icon: string) => {
         clerkId: user.id,
         domains: {
           some: {
-            name: domain,
+            subdomain: domainData.subdomain,
           },
         },
       },
@@ -48,7 +57,7 @@ export const onIntegrateDomain = async (domain: string, icon: string) => {
 
     if (domainExists) {
       console.log("Domain already exists.");
-      return { status: 400, message: 'Domain already exists' };
+      return { status: 400, message: 'Subdomain already exists' };
     }
 
     const plan = subscription.subscription.plan;
@@ -67,8 +76,11 @@ export const onIntegrateDomain = async (domain: string, icon: string) => {
         data: {
           domains: {
             create: {
-              name: domain,
-              icon,
+              name: domainData.name,
+              description: domainData.description || '',
+              subdomain: domainData.subdomain,
+              icon: domainData.icon || '',
+              custom_domain: domainData.custom_domain,
             },
           },
         },
@@ -88,6 +100,9 @@ export const onIntegrateDomain = async (domain: string, icon: string) => {
     return { status: 500, message: "Internal server error" };
   }
 }
+
+
+
 
 export const onGetSubscriptionPlan = async () => {
   try {

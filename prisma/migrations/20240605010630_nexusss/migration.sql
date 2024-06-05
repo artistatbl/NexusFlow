@@ -22,9 +22,13 @@ CREATE TABLE "User" (
 CREATE TABLE "Domain" (
     "id" UUID NOT NULL DEFAULT gen_random_uuid(),
     "name" TEXT NOT NULL,
+    "description" TEXT,
     "icon" TEXT NOT NULL,
+    "created_at" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "updated_at" TIMESTAMP(3),
+    "subdomain" TEXT NOT NULL,
+    "custom_domain" TEXT,
     "userId" UUID,
-    "campaignId" UUID,
 
     CONSTRAINT "Domain_pkey" PRIMARY KEY ("id")
 );
@@ -44,6 +48,9 @@ CREATE UNIQUE INDEX "User_email_key" ON "User"("email");
 
 -- CreateIndex
 CREATE UNIQUE INDEX "User_clerkId_key" ON "User"("clerkId");
+
+-- CreateIndex
+CREATE UNIQUE INDEX "Domain_subdomain_key" ON "Domain"("subdomain");
 
 -- CreateIndex
 CREATE UNIQUE INDEX "Billings_userId_key" ON "Billings"("userId");

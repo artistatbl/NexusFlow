@@ -7,6 +7,7 @@ import { LogOut, MonitorSmartphone } from 'lucide-react'
 import { MenuLogo } from '@/components/icons/menu-logo'
 import MenuItem from './menu-item'
 import DomainMenu from './domain-menu'
+import { UserButton } from '@clerk/nextjs'
 
 type MinMenuProps = {
   onShrink(): void
@@ -35,7 +36,7 @@ export const MinMenu = ({
       <span className="animate-fade-in opacity-0 delay-300 fill-mode-forwards cursor-pointer">
         <MenuLogo onClick={onShrink} />
       </span>
-<Separator className='mt-4' />
+<Separator className='mt-7' />
     
       <div className="animate-fade-in opacity-0 delay-300 fill-mode-forwards flex flex-col justify-between h-full pt-4 ">
 
@@ -67,17 +68,15 @@ export const MinMenu = ({
 
 
         <div className="flex flex-col">
+        <UserButton />
           <MenuItem
             size="min"
             label="Sign out"
             icon={<LogOut />}
             onSignOut={onSignOut}
           />
-          <MenuItem
-            size="min"
-            label="Mobile App"
-            icon={<MonitorSmartphone />}
-          />
+         
+        
         </div>
       </div>
     </div>

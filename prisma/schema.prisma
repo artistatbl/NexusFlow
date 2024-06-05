@@ -35,10 +35,16 @@ model User {
 model Domain {
   id   String @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
   name String
+  description String?
   icon String
+  created_at         DateTime  @default(now())
+  updated_at         DateTime? @updatedAt
+
+  subdomain  String  @unique
+  custom_domain String?
+
   User       User?      @relation(fields: [userId], references: [id], onDelete: Cascade)
   userId     String?    @db.Uuid
-  campaignId String?    @db.Uuid
 }
 
 

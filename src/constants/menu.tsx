@@ -1,12 +1,10 @@
 import CalIcon from '@/components/icons/cal-icon'
-import ChatIcon from '@/components/icons/chat-icon'
+import WorkflowIcon from '@/components/icons/workflow-icon'
 import DashboardIcon from '@/components/icons/dashboard-icon'
 import EmailIcon from '@/components/icons/email-icon'
-import HelpDeskIcon from '@/components/icons/help-desk-icon'
 import IntegrationsIcon from '@/components/icons/integrations-icon'
 import SettingsIcon from '@/components/icons/settings-icon'
-import StarIcon from '@/components/icons/star-icon'
-import TimerIcon from '@/components/icons/timer-icon'
+
 
 type SIDE_BAR_MENU_PROPS = {
   label: string
@@ -21,9 +19,9 @@ export const SIDE_BAR_MENU: SIDE_BAR_MENU_PROPS[] = [
     path: 'dashboard',
   },
   {
-    label: 'Conversations',
-    icon: <ChatIcon />,
-    path: 'billing',
+    label: 'Workflows',
+    icon: <WorkflowIcon />,
+    path: 'workflows',
   },
   {
     label: 'connections',

@@ -14,6 +14,12 @@ export default authMiddleware({
     '/api/auth/callback/slack',
     '/api/flow',
     '/api/cron/wait',
+    '/api/settings/domain',
+    '/api/settings/integrations',
+    '/api/settings/integrations/discord',
+    '/api/settings/integrations/notion',
+    '/api/settings/integrations/slack',
+    '/dashboard'
   ],
 })
 

@@ -5,6 +5,9 @@ import React from 'react'
 import DomainMenu from './domain-menu'
 import MenuItem from './menu-item'
 import { Separator } from '../ui/separator'
+import UpgradeMenu from './upgrade-menu' 
+import { ScrollArea } from '../ui/scroll-area'
+import { UserButton } from '@clerk/nextjs'
 
 type Props = {
   onExpand(): void
@@ -45,8 +48,7 @@ const MaxMenu = ({ current, domains, onExpand, onSignOut }: Props) => {
         
       </div>
      
-      <Separator className='mt-4 ' />
-
+      <Separator className='mt-7  ' />
 
       <div className="animate-fade-in opacity-0 delay-300 fill-mode-forwards flex flex-col justify-between h-full pt-10">
         <div className="flex flex-col">
@@ -60,23 +62,23 @@ const MaxMenu = ({ current, domains, onExpand, onSignOut }: Props) => {
             />
           ))}
 
-
-
+        
+         <ScrollArea className="h-[200px] w-55 p-4 rounded-md border dark:border-white border-black/50">
           <DomainMenu domains={domains} />
+        </ScrollArea>
         </div>
+        <UpgradeMenu />  
         <div className="flex flex-col">
           <p className="text-xs text-gray-500 mb-3">OPTIONS</p>
+          <UserButton />
           <MenuItem
             size="max"
             label="Sign out"
             icon={<LogOut />}
             onSignOut={onSignOut}
           />
-          <MenuItem
-            size="max"
-            label="Mobile App"
-            icon={<MonitorSmartphone />}
-          />
+       
+       
         </div>
       </div>
     </div>
