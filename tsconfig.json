@@ -5,6 +5,8 @@
     "skipLibCheck": true,
     "strict": true,
     "noEmit": true,
+    "target": "es2015" ,// or "es6", "es2017", "esnext", etc.
+
     "esModuleInterop": true,
     "module": "esnext",
     "moduleResolution": "bundler",

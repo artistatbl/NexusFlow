@@ -1,13 +1,16 @@
 'use server'
 
 import { db } from '@/lib/db'
-import { currentUser, redirectToSignIn } from '@clerk/nextjs'
+import { currentUser } from '@clerk/nextjs/server'
+import { RedirectToSignIn } from '@clerk/nextjs'
 import { onGetAllAccountDomains } from '../settings'
 
 
 export const onLoginUser = async () => {
   const user = await currentUser()
-  if (!user) redirectToSignIn()
+  if (!user){
+     return RedirectToSignIn({redirectUrl: '/sign-in'})
+  } 
   else {
     try {
       const authenticated = await db.user.findUnique({

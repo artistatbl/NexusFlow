@@ -1,6 +1,6 @@
 'use server'
 import { db } from '@/lib/db'
-import { clerkClient, currentUser } from '@clerk/nextjs'
+import { currentUser } from '@clerk/nextjs/server'
 
 
 interface DomainData {
@@ -178,6 +178,9 @@ export const onGetCurrentDomainInfo = async (domain: string) => {
             id: true,
             name: true,
             icon: true,
+            subdomain: true,
+            custom_domain: true,
+            description: true,
             userId: true,
 		},
            
@@ -212,3 +215,4 @@ export const onGetPaymentConnected = async () => {
     console.log(error)
   }
 }
+

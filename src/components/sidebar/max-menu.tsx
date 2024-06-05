@@ -18,6 +18,9 @@ type Props = {
         id: string
         name: string
         icon: string | null
+        description: string | null
+        subdomain: string
+        custom_domain: string
       }[]
     | null
     | undefined

@@ -7,7 +7,7 @@ export type DomainSettingsProps = {
   name?: string
   description?: string
   subdomain?: string
-  cover_image?: any
+  image?: any
   custom_domain?: string
   welcomeMessage?: string
 }
@@ -27,7 +27,7 @@ export const AddDomainSchema = z.object({
         /^((?!-)[A-Za-z0-9-]{1,63}(?<!-))$/i.test(value ?? ''),
       'This is not a valid subdomain'
     ),
-  cover_image: z
+  image: z
     .any()
     .refine((files) => files?.[0]?.size <= MAX_UPLOAD_SIZE, {
       message: 'Your file size must be less than 2MB',
@@ -66,7 +66,7 @@ export const DomainSettingsSchema = z
       )
       .optional()
       .or(z.literal('').transform(() => undefined)),
-    cover_image: z
+    image: z
       .any()
       .optional(),
     custom_domain: z
@@ -87,15 +87,15 @@ export const DomainSettingsSchema = z
   })
   .refine(
     (schema) => {
-      if (schema.cover_image?.length) {
+      if (schema.image?.length) {
         if (
-          ACCEPTED_FILE_TYPES.includes(schema.cover_image?.[0].type!) &&
-          schema.cover_image?.[0].size <= MAX_UPLOAD_SIZE
+          ACCEPTED_FILE_TYPES.includes(schema.image?.[0].type!) &&
+          schema.image?.[0].size <= MAX_UPLOAD_SIZE
         ) {
           return true
         }
       }
-      if (!schema.cover_image?.length) {
+      if (!schema.image?.length) {
         return true
       }
     },

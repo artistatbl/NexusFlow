@@ -1,31 +1,56 @@
-import { authMiddleware } from '@clerk/nextjs'
+import { clerkMiddleware, createRouteMatcher } from "@clerk/nextjs/server";
 
-export default authMiddleware({
-  publicRoutes: [
-    '/',
-    '/api/clerk-webhook',
-    '/api/drive-activity/notification',
-    '/api/payment/success',
-    '/images(.*)',
-  ],
-  ignoredRoutes: [
-    '/api/auth/callback/discord',
-    '/api/auth/callback/notion',
-    '/api/auth/callback/slack',
-    '/api/flow',
-    '/api/cron/wait',
-    '/api/settings/domain',
-    '/api/settings/integrations',
-    '/api/settings/integrations/discord',
-    '/api/settings/integrations/notion',
-    '/api/settings/integrations/slack',
-    '/dashboard'
-  ],
-})
+const isPublicRoute = createRouteMatcher(["/sign-in(.*)", "/sign-up(.*)" , "/", "/api/clerkhooks(.*)"]);
+
+ export default clerkMiddleware((auth, request) => {
+  //publicRoutes: ["/api/:path*"];
+ if (!isPublicRoute(request)) {
+ auth().protect();
+}
+});
 
 export const config = {
-  matcher: ['/((?!.+\\.[\\w]+$|_next).*)', '/', '/(api|trpc)(.*)'],
-}
+ matcher: ["/((?!.*\\..*|_next).*)", "/", "/(api|trpc)(.*)"],
+};
+
+
+
+
+
+
+
+
+
+
+
+// import { clerkMiddleware } from "@clerk/nextjs/server";
+
+// export default clerkMiddleware({
+//   publicRoutes: [
+//     '/',
+//     '/api/clerk-webhook',
+//     '/api/drive-activity/notification',
+//     '/api/payment/success',
+//     '/images(.*)',
+//   ],
+//   ignoredRoutes: [
+//     '/api/auth/callback/discord',
+//     '/api/auth/callback/notion',
+//     '/api/auth/callback/slack',
+//     '/api/flow',
+//     '/api/cron/wait',
+//     '/api/settings/domain',
+//     '/api/settings/integrations',
+//     '/api/settings/integrations/discord',
+//     '/api/settings/integrations/notion',
+//     '/api/settings/integrations/slack',
+//     '/dashboard'
+//   ],
+// })
+
+// export const config = {
+//   matcher: ['/((?!.+\\.[\\w]+$|_next).*)', '/', '/(api|trpc)(.*)'],
+// }
 
 // https://www.googleapis.com/auth/userinfo.email
 // https://www.googleapis.com/auth/userinfo.profile

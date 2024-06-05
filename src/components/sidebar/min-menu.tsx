@@ -18,6 +18,9 @@ type MinMenuProps = {
         id: string
         name: string
         icon: string | null
+        description: string
+        subdomain: string
+        custom_domain: string
       }[]
     | null
     | undefined

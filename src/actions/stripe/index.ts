@@ -1,7 +1,7 @@
 'use server'
 
 import { db } from '@/lib/db'
-import { currentUser } from '@clerk/nextjs'
+import { useUser } from '@clerk/nextjs'
 import Stripe from 'stripe'
 
 const stripe = new Stripe(process.env.STRIPE_SECRET!, {
@@ -37,7 +37,7 @@ export const onUpdateSubscription = async (
   plan: 'STANDARD' | 'PRO' | 'ULTIMATE'
 ) => {
   try {
-    const user = await currentUser()
+    const { user } = useUser()
     if (!user) return
     const update = await db.user.update({
       where: {
