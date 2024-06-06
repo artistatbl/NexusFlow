@@ -12,7 +12,7 @@ const SettingsIcon = (props: Props) => {
       xmlns="http://www.w3.org/2000/svg"
     >
       <path
-        fill-rule="evenodd"
+        fillRule="evenodd"
         clip-rule="evenodd"
         d="M12 15C10.3431 15 9 13.6569 9 12C9 10.3431 10.3431 9 12 9C13.6569 9 15 10.3431 15 12C15 13.6569 13.6569 15 12 15Z"
         stroke="#636363"

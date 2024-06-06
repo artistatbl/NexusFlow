@@ -3,17 +3,10 @@ import { db } from '@/lib/db'
 import { currentUser } from '@clerk/nextjs/server'
 
 
-interface DomainData {
-  name: string
-  description?: string
-  subdomain: string
-  icon?: string
-  custom_domain?: string
-}
 
-export const onIntegrateDomain = async (domainData: DomainData) => {
+export const onIntegrateDomain = async (domain: string, icon: string, custom_domain: string, description: string, subdomain: string) => {
   const user = await currentUser()
-  if (!user) return { status: 400, message: "User not found." }
+  if (!user) return { status: 4000, message: "User not found." }
 
   try {
     const subscription = await db.user.findUnique({
@@ -49,7 +42,8 @@ export const onIntegrateDomain = async (domainData: DomainData) => {
         clerkId: user.id,
         domains: {
           some: {
-            subdomain: domainData.subdomain,
+            name: domain,
+
           },
         },
       },
@@ -76,11 +70,11 @@ export const onIntegrateDomain = async (domainData: DomainData) => {
         data: {
           domains: {
             create: {
-              name: domainData.name,
-              description: domainData.description || '',
-              subdomain: domainData.subdomain,
-              icon: domainData.icon || '',
-              custom_domain: domainData.custom_domain,
+              name: domain,
+              icon: icon,
+              custom_domain: custom_domain,
+              description: description,
+              subdomain: subdomain,
             },
           },
         },

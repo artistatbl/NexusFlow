@@ -1,24 +1,28 @@
 import { createServerClient } from "@supabase/ssr";
 import { cookies } from "next/headers";
 
+const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL!;
+const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!;
+
 export const userCreate = async ({
   email,
-  first_name,
-  last_name,
-  profile_image_url,
+  name,
+  profileImage,
   user_id,
 }: {
   email: string;
-  first_name: string;
-  last_name: string;
-  profile_image_url: string;
+  name: string;
+  profileImage: string;
   user_id: string;
 }) => {
   const cookieStore = cookies();
 
+  console.log("Supabase URL:", supabaseUrl);
+  console.log("Supabase Key:", supabaseAnonKey);
+
   const supabase = createServerClient(
-    process.env.NEXT_PUBLIC_SUPABASE_URL!,
-    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
+    supabaseUrl,
+    supabaseAnonKey,
     {
       cookies: {
         get(name: string) {
@@ -30,24 +34,18 @@ export const userCreate = async ({
 
   try {
     const { data, error } = await supabase
-      .from("user")
-      .insert([{ email, first_name, last_name, profile_image_url, user_id }])
+      .from("User")
+      .insert([{ email, name, profileImage, user_id }])
       .select();
 
-    if (error?.code) return error;
-
-    // After successfully creating the user, create a billing record
-    const { error: billingError } = await supabase
-      .from("billing")
-      .insert([{
-        user_id: user_id,
-        plan: 'STANDARD'
-      }]);
-
-    if (billingError?.code) return billingError;
+    if (error) {
+      console.error("Supabase error:", error);
+      return error;
+    }
 
     return data;
   } catch (error: any) {
+    console.error("Catch error:", error.message);
     return error;
   }
 };

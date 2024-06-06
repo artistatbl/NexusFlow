@@ -102,6 +102,6 @@ export const DomainSettingsSchema = z
     {
       message:
         'The file must be less than 2MB, and only PNG, JPEG & JPG files are accepted',
-      path: ['cover_image'],
+      path: ['icon'],
     }
   )

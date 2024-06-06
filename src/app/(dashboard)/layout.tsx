@@ -3,19 +3,39 @@ import Sidebar from '@/components/sidebar'
 import InfoBar from '@/components/infobar'
 import { onLoginUser } from '@/actions/auth'
 
+interface AuthenticatedUser {
+  status: number;
+  user?: { id: string; name: string | null };
+  domain?: {
+    id: string; 
+    name: string; 
+    icon: string;
+    description?: string;
+    subdomain?: string;
+    custom_domain?: string;
+  }[];
+}
+
 type Props = { children: React.ReactNode }
 
 const OwnerLayout = async ({ children }: Props) => {
-   const authenticated = await onLoginUser();
+   const authenticated = await onLoginUser() as AuthenticatedUser;
    console.log(authenticated); // Check what value it returns
-   if (!authenticated) {
+   if (!authenticated || !authenticated.domain) {
      return <div>Please log in to access this page.</div>;
    }
 
+   // Extend domain objects with default values for missing properties
+   const extendedDomains = authenticated.domain.map(domain => ({
+     ...domain,
+     description: domain.description || 'No description available',
+     subdomain: domain.subdomain || 'default',
+     custom_domain: domain.custom_domain || 'none'
+   }));
 
-  return (
+   return (
     <div className="flex h-screen w-full">
-      <Sidebar domains={authenticated?.domain}/>
+      <Sidebar domains={extendedDomains}/>
       <div className="w-full h-screen flex flex-col pl-20 md:pl-4">
         {children}
       </div>

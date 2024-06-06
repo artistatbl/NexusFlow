@@ -16,7 +16,7 @@ type Props = {
     | {
         id: string
         name: string
-	   description: string | null
+	   description: string
 	   subdomain: string
 	   custom_domain: string
         icon: string | null
@@ -28,13 +28,23 @@ type Props = {
 const DomainMenu = ({ domains, min }: Props) => {
   const { register, onAddDomain, loading, errors, isDomain } = useDomain()
 
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+	event.preventDefault();
+	console.log("Attempting to add domain...");
+	try {
+	  await onAddDomain(event);
+	  console.log("Domain added successfully.");
+	} catch (error) {
+	  console.error("Error adding domain:", error);
+	}
+   }
   return (
     <div className={cn('flex flex-col gap-3', min ? 'mt-6' : 'mt-3')}>
       <div className="flex justify-between w-full items-center">
         {!min && <p className="text-xs text-gray-500">DOMAINS</p>}
         <AppDrawer
           description="Add in your domain address to integrate your chatbot"
-          title="Add your business domain"
+          title="Add your Domain"
           onOpen={
             <div className="cursor-pointer text-gray-500 rounded-full border-2">
               <Plus />
@@ -43,7 +53,7 @@ const DomainMenu = ({ domains, min }: Props) => {
         >
           <Loader loading={loading}>
             <form
-              className="mt-3 w-6/12 flex flex-col gap-3"
+              className="mt-3 md:grid grid-cols-2   gap-3"
               onSubmit={onAddDomain}
             >
               <FormGenerator
@@ -97,6 +107,7 @@ const DomainMenu = ({ domains, min }: Props) => {
           </Loader>
         </AppDrawer>
       </div>
+
       <div className="flex flex-col gap-1 text-white font-medium">
         {domains &&
           domains.map((domain) => (
@@ -119,6 +130,7 @@ const DomainMenu = ({ domains, min }: Props) => {
             </Link>
           ))}
       </div>
+
     </div>
   )
 }
