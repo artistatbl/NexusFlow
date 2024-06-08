@@ -34,6 +34,9 @@ const IntegrationTrigger = ({
           {connections[name] ? 'connected' : 'connect'}
         </Card>
       }
+      onClose={() => {
+        console.log('closed')
+      }}
     >
       <Separator orientation="horizontal" />
       <IntegrationModalBody

@@ -39,8 +39,7 @@ model Domain {
   name String
   description String?
   icon String
-  created_at         DateTime  @default(now())
-  updated_at         DateTime? @updatedAt
+
 
   subdomain  String  @unique
   custom_domain String?

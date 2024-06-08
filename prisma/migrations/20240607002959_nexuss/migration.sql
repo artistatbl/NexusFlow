@@ -24,8 +24,6 @@ CREATE TABLE "Domain" (
     "name" TEXT NOT NULL,
     "description" TEXT,
     "icon" TEXT NOT NULL,
-    "created_at" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    "updated_at" TIMESTAMP(3),
     "subdomain" TEXT NOT NULL,
     "custom_domain" TEXT,
     "userId" UUID,

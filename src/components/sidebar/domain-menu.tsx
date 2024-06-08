@@ -28,16 +28,12 @@ type Props = {
 const DomainMenu = ({ domains, min }: Props) => {
   const { register, onAddDomain, loading, errors, isDomain } = useDomain()
 
-  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
-	event.preventDefault();
-	console.log("Attempting to add domain...");
-	try {
-	  await onAddDomain(event);
-	  console.log("Domain added successfully.");
-	} catch (error) {
-	  console.error("Error adding domain:", error);
-	}
-   }
+  console.log("DomainMenu component rendered");
+  console.log("Domains:", domains);
+  console.log("Loading:", loading);
+  console.log("Errors:", errors);
+  console.log("isDomain:", isDomain);
+
   return (
     <div className={cn('flex flex-col gap-3', min ? 'mt-6' : 'mt-3')}>
       <div className="flex justify-between w-full items-center">
@@ -54,7 +50,14 @@ const DomainMenu = ({ domains, min }: Props) => {
           <Loader loading={loading}>
             <form
               className="mt-3 md:grid grid-cols-2   gap-3"
-              onSubmit={onAddDomain}
+              // onSubmit={onAddDomain}
+              onSubmit={(e) => {
+                e.preventDefault();
+                console.log("Form values before submission:", new FormData(e.target as HTMLFormElement));
+
+              }}
+
+              
             >
               <FormGenerator
                 inputType="input"

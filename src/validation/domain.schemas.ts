@@ -12,19 +12,18 @@ export type DomainSettingsProps = {
   welcomeMessage?: string
 }
 
+
 export const AddDomainSchema = z.object({
   name: z
     .string()
-    .min(4, { message: 'A domain name must have at least 4 characters' }),
-  description: z
-    .string()
-    .optional(),
+    .min(4, { message: 'A domain name must have at least 4 characters' })
+    .nonempty({ message: 'Required' }), // Ensure the field is required
+  description: z.string().optional(),
   subdomain: z
     .string()
     .min(4, { message: 'A subdomain must have at least 4 characters' })
     .refine(
-      (value) =>
-        /^((?!-)[A-Za-z0-9-]{1,63}(?<!-))$/i.test(value ?? ''),
+      (value) => /^((?!-)[A-Za-z0-9-]{1,63}(?<!-))$/i.test(value ?? ''),
       'This is not a valid subdomain'
     ),
   image: z
@@ -39,11 +38,10 @@ export const AddDomainSchema = z.object({
     .string()
     .optional()
     .refine(
-      (value) =>
-        /^((?!-)[A-Za-z0-9-]{1,255}(?<!-))$/i.test(value ?? ''),
+      (value) => /^((?!-)[A-Za-z0-9-]{1,255}(?<!-))$/i.test(value ?? ''),
       'This is not a valid custom domain'
     ),
-})
+});
 
 export const DomainSettingsSchema = z
   .object({

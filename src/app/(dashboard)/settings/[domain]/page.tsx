@@ -3,7 +3,7 @@ import { redirect } from "next/navigation"
 import InfoBar from "@/components/infobar"
 import {Separator} from "@/components/ui/separator"
 import { Button } from "@/components/ui/button"
-
+import Image from "next/image"
 type Props = {
 	params: {
 	  domain: string;
@@ -24,8 +24,15 @@ type Props = {
 		 </div>
 		 {domain.domains.map((d: any) => (
 		   <div key={d.id} className="border p-4 rounded-lg shadow-md">
+
+<Image
+                src={`https://ucarecdn.com/${d.icon}/`}
+                alt="logo"
+                width={20}
+                height={20}
+              />
 			<div className="flex items-center">
-			  {d.icon && <img src={d.icon} alt={d.name} className="w-12 h-12 mr-4" />}
+
 			  <div>
 			    <h2 className="text-xl font-semibold">{d.name}</h2>
 			    <p className="text-sm text-gray-500">{d.description}</p>
@@ -44,5 +51,3 @@ type Props = {
    };
    
    export default DomainSettingsPage;
-
-

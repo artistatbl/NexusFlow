@@ -2,9 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
-img {
-  max-width: none;
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
 }
+
 
 body {
   background: transparent;
@@ -106,3 +109,4 @@ body {
     width: 1050px; /* Adjust as needed for large screens */
   }
 }
+

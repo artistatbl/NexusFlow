@@ -10,53 +10,30 @@ export const onIntegrateDomain = async (domain: string, icon: string, custom_dom
 
   try {
     const subscription = await db.user.findUnique({
-      where: {
-        clerkId: user.id,
-      },
+      where: { clerkId: user.id },
       select: {
-        _count: {
-          select: {
-            domains: true,
-          },
-        },
-        subscription: {
-          select: {
-            plan: true,
-          },
-        },
+        _count: { select: { domains: true } },
+        subscription: { select: { plan: true } },
       },
     })
 
-    console.log("Fetched subscription data:", subscription);
-
     if (!subscription || !subscription.subscription) {
-      console.log("Subscription or plan details are missing.");
-      return { status: 400, message: "Subscription plan details are missing." };
+      return { status: 400, message: "Subscription plan details are missing." }
     }
-
-    console.log(`User Plan: ${subscription.subscription.plan}`);
-    console.log(`Current Domain Count: ${subscription._count.domains}`);
 
     const domainExists = await db.user.findFirst({
       where: {
         clerkId: user.id,
-        domains: {
-          some: {
-            name: domain,
-
-          },
-        },
+        domains: { some: { name: domain, subdomain } },
       },
     })
 
     if (domainExists) {
-      console.log("Domain already exists.");
-      return { status: 400, message: 'Subdomain already exists' };
+      return { status: 400, message: 'Subdomain already exists' }
     }
 
-    const plan = subscription.subscription.plan;
-    const domainCount = subscription._count.domains;
-    console.log(`Checking conditions for plan: ${plan} with domain count: ${domainCount}`);
+    const plan = subscription.subscription.plan
+    const domainCount = subscription._count.domains
 
     if (
       (plan === 'STANDARD' && domainCount < 3) ||
@@ -64,9 +41,7 @@ export const onIntegrateDomain = async (domain: string, icon: string, custom_dom
       (plan === 'ULTIMATE' && domainCount < 10)
     ) {
       const newDomain = await db.user.update({
-        where: {
-          clerkId: user.id,
-        },
+        where: { clerkId: user.id },
         data: {
           domains: {
             create: {
@@ -79,22 +54,15 @@ export const onIntegrateDomain = async (domain: string, icon: string, custom_dom
           },
         },
       })
-
-      console.log("New domain added:", newDomain);
       return { status: 200, message: 'Domain successfully added' }
     } else {
-      console.log("Domain limit reached for plan:", plan);
-      return {
-        status: 400,
-        message: "You've reached the maximum number of domains, upgrade your plan",
-      }
+      return { status: 400, message: "You've reached the maximum number of domains, upgrade your plan" }
     }
   } catch (error) {
-    console.error("Error adding domain:", error);
-    return { status: 500, message: "Internal server error" };
+    console.error("Error adding domain:", error)
+    return { status: 500, message: "Internal server error" }
   }
 }
-
 
 
 
@@ -137,6 +105,10 @@ export const onGetAllAccountDomains = async () => {
             name: true,
             icon: true,
             id: true,
+            subdomain: true,
+            custom_domain: true,
+            description: true,
+            userId: true,
 		},
         },
       },

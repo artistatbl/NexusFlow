@@ -19,16 +19,10 @@ const config = {
     },
     extend: {
       colors: {
-        cream: '#F5F5F5',
-        gravel: '#4E4E4E',
-        iridium: '#3F3F3F',
-        orange: '#FFA947',
-        peach: '#FFE0BD',
-        platinum: '#E6E6E6',
-        ghost: '#CDCDCD',
-        grandis: '#FFC989',
-        porcelain: '#F1F1F1',
-        ironside: '#636363',
+        bg: '#E0E7F1',
+        main: '#A3E636',
+        mainAccent: '#4d80e6', // not needed for shadcn
+    
         border: 'hsl(var(--border))',
         input: 'hsl(var(--input))',
         ring: 'hsl(var(--ring))',
@@ -67,6 +61,15 @@ const config = {
         lg: 'var(--radius)',
         md: 'calc(var(--radius) - 2px)',
         sm: 'calc(var(--radius) - 4px)',
+        base: '5px'
+
+      },
+      boxShadow: {
+        base: '4px 4px 0px 0px rgba(0,0,0,1)',
+      },
+      fontWeight: {
+        base: '500',
+        heading: '700',
       },
       keyframes: {
         'shake': {

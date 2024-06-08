@@ -1,12 +1,12 @@
 import type { Metadata } from "next";
-import { Plus_Jakarta_Sans } from "next/font/google";
+import { DM_Sans } from 'next/font/google'
 import { ThemeProvider } from "@/providers/theme-provider";
 import { ClerkProvider } from "@clerk/nextjs";
 import "./globals.css";
 import TopBanner from "@/components/global/banner";
 import { Toaster } from "@/components/ui/toaster";
 
-const font = Plus_Jakarta_Sans({ subsets: ['latin']});
+const dmSans = DM_Sans({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
   title: "NexusFlow",
@@ -24,7 +24,7 @@ export default function RootLayout({
     
     >
     <html lang="en">
-      <body className={font.className}>
+      <body className={dmSans.className}>
         <ThemeProvider
         
           attribute="class"
