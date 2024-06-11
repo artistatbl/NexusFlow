@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { User } from 'lucide-react'
 import DarkModetoggle from '@/components/setting/dark-mode'
 import InfoBar from '@/components/infobar'

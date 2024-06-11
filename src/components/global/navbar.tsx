@@ -22,7 +22,7 @@ const Navbar =  ( props: Props) => {
           width={10}
           height={10}
           alt="fuzzie logo"
-          className="shadow-sm bg-neutral-500"
+          className="shadow-sm bg-main"
         />
         <p className="text-lg font-bold">Flow</p>
       </aside>
@@ -41,7 +41,9 @@ const Navbar =  ( props: Props) => {
       </nav>
       <aside className="flex items-center gap-4">
         <Button>
-          Go to Dashboard
+          <Link href="/dashboard">
+           Dashboard
+          </Link>
         </Button>
         {/* {user ? <UserButton afterSignOutUrl="/" /> : null} */}
         <MenuIcon className="md:hidden" />

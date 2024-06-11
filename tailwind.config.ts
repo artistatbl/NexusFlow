@@ -1,4 +1,6 @@
 import type { Config } from 'tailwindcss'
+import tailwindAnimate from 'tailwindcss-animate'
+
 
 const config = {
   darkMode: ['class'],
@@ -112,9 +114,27 @@ const config = {
             'offset-distance': '100%',
           },
         },
+        marquee: {
+          '0%': { transform: 'translateX(0%)' },
+          '100%': { transform: 'translateX(-100%)' },
+        },
+        marquee2: {
+          '0%': { transform: 'translateX(100%)' },
+          '100%': { transform: 'translateX(0%)' },
+        },
+        "background-position-spin": {
+          "0%": { backgroundPosition: "top center" },
+          "100%": { backgroundPosition: "bottom center" },
+        },
+      },
+        
 
       },
       animation: {
+        // backgroundPositionSpin: {
+        //   '0%': { backgroundPosition: '0% 50%' },
+        //   '100%': { backgroundPosition: '100% 50%' },
+        // },
         'shake': 'shake 1s ease-in-out infinite',
         'accordion-down': 'accordion-down 0.2s ease-out',
         'accordion-up': 'accordion-up 0.2s ease-out',
@@ -123,14 +143,25 @@ const config = {
         'close-sidebar': 'close-sidebar 0.2s ease-out',
         'fade-in': 'fade-in 0.2s ease-out',
         'border-beam': 'border-beam calc(var(--duration) * 1s) infinite linear',
+        marquee: 'marquee 15s linear infinite',
+        marquee2: 'marquee2 15s linear infinite',
+        backgroundPositionSpin:
+        "background-position-spin 3000ms infinite alternate",
         scroll:
           "scroll var(--animation-duration, 40s) var(--animation-direction, forwards) linear infinite",
     
 
+    
+  
+
+      screens: {
+        w900: { raw: '(max-width: 900px)' },
+        w500: { raw: '(max-width: 500px)' },
       },
     },
   },
-  plugins: [require('tailwindcss-animate')],
-} satisfies Config
+  plugins: [tailwindAnimate],
+
+} 
 
 export default config

@@ -10,8 +10,7 @@ import clsx from 'clsx'
 import Link from 'next/link'
 
 import TextShimmer from '@/components/global/animated-shiny-text'
-import Button from '@/components/cartoon/Button'
-
+import {ModeToggle} from '@/components/global/mode-toggle'
 
 import { pricingCards } from '@/constants/landing-page'
 import Faq from '@/components/global/faq'
@@ -22,6 +21,7 @@ import Image from 'next/image'
 import { BorderBeam } from '@/components/global/border.beam'
 import Marquee from 'react-fast-marquee'
 import Community from '@/components/global/community'
+import { NeonGradientCard } from "@/components/global/neon-gradient-card";
 
 export default function Home() {
 
@@ -33,8 +33,8 @@ export default function Home() {
       <Navbar
 
       />
-      <section className="h-screen w-full bg-white  dark:bg-neutral-950   !overflow-visible relative flex flex-col items-center  antialiased bg-[linear-gradient(to_right,#80808033_1px,transparent_1px),linear-gradient(to_bottom,#80808033_1px,transparent_1px)] bg-[size:42px_42px]">
-        <div className="absolute inset-0  h-full w-full items-center px-5 py-24 "></div>
+      <section className="h-screen w-full bg-white dark:bg-neutral-950 !overflow-visible relative flex flex-col items-center antialiased bg-white dark:bg-neutral">
+        <div className="absolute inset-0  h-full w-full items-center px-5 py-32"></div>
 
         <div className="relative flex h-full  w-full  flex-col items-center justify-center">
 
@@ -45,11 +45,12 @@ export default function Home() {
             <span className="font-light text-sm text-black dark:text-white">✨ Introducing NexusFlow</span>
             <ArrowRightIcon className="ml-1 size-3 transition-transform duration-300 ease-in-out group-hover:translate-x-0.5" />
           </TextShimmer>
-          <h1 className="text-3xl md:text-5xl text-center bg-clip-text text-transparent bg-gradient-to-t from-zinc-900 to-main  font-sans font-bold">
-            Automate Your Work With NexusFlow
+          <h1 className="text-4xl md:text-6xl text-center bg-clip-text text-transparent bg-gradient-to-t from-zinc-900 to-main  font-sans font-bold w-[90vw]">
+          Get Your Blog Online with NexusFlow in Minutes
+
           </h1>
-          <p className="text-md text-center  mb-5 text-gray-400 ">
-            powerful, easy-to-use development tool for web and mobile. automate your work.
+          <p className="text-md text-center  mb-5 text-gray-400 w-[60vw]">
+          A powerful, easy-to-use CMS built with Next.js and Supabase. Automate your work with this cutting-edge development tool for web
           </p>
 
 
@@ -60,13 +61,14 @@ export default function Home() {
 
           <div className='relative rounded-xl shadow-xl'>
 
+<NeonGradientCard>
+
             <Image
               src="/banner.png"
               alt="Hero Image"
-              objectFit="contain"
               width={1000}
               height={720}
-              className="hidden w-[1000px] rounded-[inherit] border shadow-lg dark:block custom-image-size"
+              className="hidden w-[1000px] rounded-[inherit] border shadow-lg dark:block custom-image-size "
             />
 
 
@@ -82,6 +84,7 @@ export default function Home() {
 
             <BorderBeam size={200} duration={12} delay={4} />
 
+              </NeonGradientCard>
 
            
           </div>
@@ -97,7 +100,7 @@ export default function Home() {
 
 
       </section>
-
+{/* 
       <div className="">
         <Marquee
           className="border-y-2 border-y-black bg-white py-3 font-base sm:py-5"
@@ -120,7 +123,7 @@ export default function Home() {
               )
             })}
         </Marquee>
-      </div>
+      </div> */}
 
 
 
@@ -197,9 +200,9 @@ export default function Home() {
 
 
       {/* footer */}
+ 
 
-
-      <section className="w-full p-10 border-t border-black[0.5] text-justify bg-white dark:bg-neutral-950  text-white dark:text-black">
+      <section className="w-full p-10 border-t-2 border-black text-justify bg-white dark:bg-neutral-950  text-white dark:text-black">
         <div className="container mx-auto px-4 grid grid-cols-2 md:grid-cols-3 gap-8">
           <div className="flex flex-col text-black dark:text-white">
             <h2 className="text-md text-gray-500 font-extrabold mb-4">lINKS</h2>
@@ -207,6 +210,8 @@ export default function Home() {
             <a href="/features" className="hover:text-gray-300 transition-colors mb-2">Features</a>
             <a href="/pricing" className="hover:text-gray-300 transition-colors mb-2">Pricing</a>
           </div>
+         
+
           <div className="flex flex-col  text-black dark:text-white">
             <h2 className="text-md text-gray-500 font-extrabold mb-4">SUPPORT</h2>
             <a href="/security" className="hover:text-gray-300 transition-colors mb-2">Security</a>
@@ -245,9 +250,10 @@ export default function Home() {
           </div>
           <p className="text-sm mt-4 md:mt-0  text-black dark:text-white">&copy; 2024 NexusFlow. All rights reserved.</p>
         </div>
+        {/* <ModeToggle /> */}
       </section>
 
-
+      {/* <ModeToggle /> */}
 
     </main>
   )

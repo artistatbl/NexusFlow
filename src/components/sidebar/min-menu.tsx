@@ -35,7 +35,6 @@ export const MinMenu = ({
   return (
     <div className="p-3 flex flex-col items-center  h-full">
 
-      {/* <Separator /> */}
       <span className="animate-fade-in opacity-0 delay-300 fill-mode-forwards cursor-pointer">
         <MenuLogo onClick={onShrink} />
       </span>

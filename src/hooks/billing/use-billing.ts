@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useCallback } from 'react'
 import {
   onCreateCustomerPaymentIntentSecret,
   onGetStripeClientSecret,
@@ -37,7 +37,7 @@ export const useStripeCustomer = (amount: number, stripeId: string) => {
   const [stripeSecret, setStripeSecret] = useState<string>('')
   const [loadForm, setLoadForm] = useState<boolean>(false)
 
-  const onGetCustomerIntent = async (amount: number) => {
+  const onGetCustomerIntent = useCallback(async (amount: number) => {
     try {
       setLoadForm(true)
       const intent = await onCreateCustomerPaymentIntentSecret(amount, stripeId)
@@ -48,11 +48,11 @@ export const useStripeCustomer = (amount: number, stripeId: string) => {
     } catch (error) {
       console.log(error)
     }
-  }
+  }, [stripeId])
 
   useEffect(() => {
     onGetCustomerIntent(amount)
-  }, [])
+  }, [amount, onGetCustomerIntent])
 
   return { stripeSecret, loadForm }
 }

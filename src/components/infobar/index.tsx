@@ -26,7 +26,7 @@ const InfoBar = (props: Props) => {
   
       <div className="flex gap-3 items-center">
         <div>
-        <Command>
+        {/* <Command>
   <CommandInput placeholder="Type a command or search..." />
   <CommandList>
   
@@ -34,7 +34,7 @@ const InfoBar = (props: Props) => {
     <CommandSeparator />
   
   </CommandList>
-</Command>
+</Command> */}
 
         </div>
       </div>
