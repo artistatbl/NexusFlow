@@ -30,12 +30,11 @@ export default function Community() {
                   key={index}
                 >
                   <div className="flex items-center gap-5">
-                    <Image
+                    <img
                       className="h-12 w-12 rounded-base border-2 border-black dark:border-white"
                       src={pfp}
                       alt="pfp"
-                      width={48}
-                      height={48}
+                     
                     />
 
                     <div>

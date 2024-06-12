@@ -1,16 +1,36 @@
 import { clerkMiddleware, createRouteMatcher } from "@clerk/nextjs/server";
+import { NextRequest } from "next/server";
 
-const isPublicRoute = createRouteMatcher(["/sign-in(.*)", "/sign-up(.*)" , "/", "/api/webhooks(.*)"]);
+// Define public routes
+const isPublicRoute = createRouteMatcher([
+  "/sign-in(.*)", 
+  "/sign-up(.*)", 
+  "/", 
+  "/api/webhooks(.*)"
+]);
 
- export default clerkMiddleware((auth, request) => {
-  //publicRoutes: ["/api/:path*"];
- if (!isPublicRoute(request)) {
- auth().protect();
-}
+// Middleware function
+const middleware = clerkMiddleware(async (auth, req: NextRequest) => {
+  // If the request matches a public route, allow it through
+  if (isPublicRoute(req)) {
+    return;
+  }
+
+  // Protect all other routes
+  const authResult = await auth();
+  if (!authResult.sessionId) {
+    return new Response('Unauthorized', { status: 401 });
+  }
 });
 
+export default middleware;
+
 export const config = {
- matcher: ["/((?!.*\\..*|_next).*)", "/", "/(api|trpc)(.*)"],
+  matcher: [
+    "/((?!.*\\..*|_next).*)", 
+    "/", 
+    "/(api|trpc)(.*)"
+  ],
 };
 
 
@@ -19,41 +39,3 @@ export const config = {
 
 
 
-
-
-
-
-// import { clerkMiddleware } from "@clerk/nextjs/server";
-
-// export default clerkMiddleware({
-//   publicRoutes: [
-//     '/',
-//     '/api/clerk-webhook',
-//     '/api/drive-activity/notification',
-//     '/api/payment/success',
-//     '/images(.*)',
-//   ],
-//   ignoredRoutes: [
-//     '/api/auth/callback/discord',
-//     '/api/auth/callback/notion',
-//     '/api/auth/callback/slack',
-//     '/api/flow',
-//     '/api/cron/wait',
-//     '/api/settings/domain',
-//     '/api/settings/integrations',
-//     '/api/settings/integrations/discord',
-//     '/api/settings/integrations/notion',
-//     '/api/settings/integrations/slack',
-//     '/dashboard'
-//   ],
-// })
-
-// export const config = {
-//   matcher: ['/((?!.+\\.[\\w]+$|_next).*)', '/', '/(api|trpc)(.*)'],
-// }
-
-// https://www.googleapis.com/auth/userinfo.email
-// https://www.googleapis.com/auth/userinfo.profile
-// https://www.googleapis.com/auth/drive.activity.readonly
-// https://www.googleapis.com/auth/drive.metadata
-// https://www.googleapis.com/auth/drive.readonly
