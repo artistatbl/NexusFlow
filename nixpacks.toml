@@ -1,0 +1,14 @@
+[build]
+builder = "node"
+
+[phases]
+  [phases.install]
+  commands = [
+    "npm ci"  # Use npm ci to install dependencies
+  ]
+
+  [phases.build]
+  commands = [
+    "npx prisma generate",  # Prisma schema generation
+    "next build"  # Next.js build
+  ]
