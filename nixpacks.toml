@@ -4,16 +4,16 @@ builder = "node"
 [phases]
   [phases.install]
   commands = [
-    "npm ci"  # Install dependencies using npm ci
+    "npm ci"  # Install dependencies
   ]
 
   [phases.build]
   commands = [
-    "npx prisma generate",  # Prisma schema generation
-    "next build"  # Build the Next.js app
+    "npx prisma generate",  # Generate Prisma client
+    "next build"  # Build the Next.js application
   ]
 
   [phases.start]
   commands = [
-    "next start -p 3000"  # Start the Next.js server
+    "npx next start -p 3000"  # Start the Next.js server
   ]
