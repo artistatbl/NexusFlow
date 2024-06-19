@@ -103,3 +103,11 @@ export const DomainSettingsSchema = z
       path: ['icon'],
     }
   )
+
+
+  //testing this is nothing here, just trying to see if the schema is working
+  //testing this is nothing here, just trying to see if the schema is working
+  //testing this is nothing here, just trying to see if the schema is working
+  //testing this is nothing here, just trying to see if the schema is working
+  //testing this is nothing here, just trying to see if the schema is working
+  //testing this is nothing here, just trying to see if the schema is working
