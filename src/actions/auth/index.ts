@@ -3,12 +3,12 @@
 import { db } from '@/lib/db'
 import { currentUser } from '@clerk/nextjs/server'
 import { onGetAllAccountDomains } from '../settings'
-import { RedirectToSignIn } from '@clerk/nextjs'
+import {  } from '@clerk/nextjs/server'
 
 export const onLoginUser = async () => {
   const user = await currentUser()
   if (!user){
-     return RedirectToSignIn({redirectUrl: '/sign-in'})
+    return { status: 401 }
   } 
   else {
     try {

@@ -188,12 +188,8 @@ export const onGetPaymentConnected = async () => {
 // Function to fetch site data based on a custom domain
 export const readSiteDomain = async (domain: string) => {
   try {
-    const user = await currentUser();
-    if (!user) return { status: 400, message: "User not found." };
-
     const domainData = await db.user.findFirst({
       where: {
-        clerkId: user.id,
         domains: {
           some: {
             custom_domain: domain
