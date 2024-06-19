@@ -15,8 +15,12 @@ const Connections = async () => {
   return (
     <> 
     <InfoBar />
-      <IntegrationsList connections={connections} />
 
+
+<div className='flex flex-col gap-4 mt-10'>
+     <IntegrationsList connections={connections} />
+  
+  </div>  
     </>
   )
    

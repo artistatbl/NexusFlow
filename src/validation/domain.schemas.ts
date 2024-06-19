@@ -4,7 +4,7 @@ export const MAX_UPLOAD_SIZE = 1024 * 1024 * 2 // 2MB
 export const ACCEPTED_FILE_TYPES = ['image/png', 'image/jpg', 'image/jpeg']
 
 export type DomainSettingsProps = {
-  name?: string
+  domain?: string
   description?: string
   subdomain?: string
   image?: any
@@ -14,10 +14,10 @@ export type DomainSettingsProps = {
 
 
 export const AddDomainSchema = z.object({
-  name: z
+  domain: z
     .string()
-    .min(4, { message: 'A domain name must have at least 4 characters' })
-    .nonempty({ message: 'Required' }), // Ensure the field is required
+    .min(4, { message: 'A domain name must have at least 4 characters' }),
+    //.({ message: 'Required' }), // Ensure the field is required
   description: z.string().optional(),
   subdomain: z
     .string()
@@ -45,7 +45,7 @@ export const AddDomainSchema = z.object({
 
 export const DomainSettingsSchema = z
   .object({
-    name: z
+    domain: z
       .string()
       .min(4, { message: 'A domain name must have at least 4 characters' })
       .optional()

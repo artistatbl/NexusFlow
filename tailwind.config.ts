@@ -19,8 +19,11 @@ const config = {
         '2xl': '1400px',
       },
     },
+  
     extend: {
       colors: {
+      
+
         bg: '#E0E7F1',
         main: '#A3E636',
         mainAccent: '#4d80e6', // not needed for shadcn
@@ -160,7 +163,10 @@ const config = {
       },
     },
   },
-  plugins: [tailwindAnimate],
+  plugins: [
+    tailwindAnimate,
+  //  require("daisyui")
+  ],
 
 } 
 

@@ -2,9 +2,8 @@
 
 import { db } from '@/lib/db'
 import { currentUser } from '@clerk/nextjs/server'
-import { RedirectToSignIn } from '@clerk/nextjs'
 import { onGetAllAccountDomains } from '../settings'
-
+import { RedirectToSignIn } from '@clerk/nextjs'
 
 export const onLoginUser = async () => {
   const user = await currentUser()

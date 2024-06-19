@@ -16,7 +16,7 @@ const Page = (props: Props) => {
    
     <div className="flex flex-col gap-10 p-6">
 
-      dashboard
+      appointment
      
 
     </div>

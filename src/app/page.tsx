@@ -16,52 +16,56 @@ import { pricingCards } from '@/constants/landing-page'
 import Faq from '@/components/global/faq'
 
 import Navbar from '@/components/global/navbar'
-import { ArrowRightIcon, Check, LinkedinIcon, MailCheckIcon, Twitter } from 'lucide-react'
+import { ArrowRightIcon} from 'lucide-react'
 import Image from 'next/image'
 import { BorderBeam } from '@/components/global/border.beam'
-import Marquee from 'react-fast-marquee'
 import Community from '@/components/global/community'
-import { NeonGradientCard } from "@/components/global/neon-gradient-card";
-
+import Footer from '@/components/global/footer'
+import Button from '@/components/cartoon/Button'
+import {WobbleCardDemo} from '@/components/global/display-card'
+import { StickyScrollRevealDemo } from '@/components/global/sticky-scroll'
 export default function Home() {
 
 
 
   return (
 
-    <main className="flex items-center justify-center flex-col bg-white  ">
+    <main className="flex items-center justify-center flex-col bg-white  dark:bg-neutral-950 ">
       <Navbar
 
       />
       <section className="h-screen w-full bg-white dark:bg-neutral-950 !overflow-visible relative flex flex-col items-center antialiased bg-white dark:bg-neutral">
         <div className="absolute inset-0  h-full w-full items-center px-5 py-32"></div>
 
-        <div className="relative flex h-full  w-full  flex-col items-center justify-center">
+        <div className="relative flex h-full  w-full  mt-36 flex-col items-center justify-center">
 
 
 
 
-          <TextShimmer className="inline-flex mt-24 mb-10 items-center justify-center px-4 py-1 transition ease-out hover:text-neutral-600 hover:duration-300 hover:dark:text-neutral-400">
-            <span className="font-light text-sm text-black dark:text-white">✨ Introducing NexusFlow</span>
-            <ArrowRightIcon className="ml-1 size-3 transition-transform duration-300 ease-in-out group-hover:translate-x-0.5" />
-          </TextShimmer>
-          <h1 className="text-4xl md:text-6xl text-center bg-clip-text text-transparent bg-gradient-to-t from-zinc-900 to-main  font-sans font-bold w-[90vw]">
+         
+          <h1 className="text-4xl md:text-7xl xl:w-[60%]  text-center bg-clip-text text-transparent bg-gradient-to-t from-zinc-900 to-main  font-sans font-bold w-[90vw]">
           Get Your Blog Online with NexusFlow in Minutes
 
           </h1>
-          <p className="text-md text-center  mb-5 text-gray-400 w-[60vw]">
+          <p className="text-md text-center  mb-5 text-gray-400 w-[50%] sm:w-[50%] lg:w-[50%] md:w-[57%] xl:w-[40%] ">
           A powerful, easy-to-use CMS built with Next.js and Supabase. Automate your work with this cutting-edge development tool for web
           </p>
 
 
+          <form className='w-full max-w-lg mx-auto flex flex-col sm:flex-row space-y-2 sm:space-y-0 sm:space-x-2 mb-10'>
+            <input type="email" placeholder="Enter your email" className='flex-1 p-2 rounded-md border-2 border-black dark:border-white' />
+            <Button >Join the Waitlist</Button>
+          </form>
 
 
 
 
 
-          <div className='relative rounded-xl shadow-xl'>
 
-<NeonGradientCard>
+
+          <div className='relative rounded-xl mt-10 shadow-xl '>
+
+
 
             <Image
               src="/banner.png"
@@ -82,9 +86,8 @@ export default function Home() {
             />
 
 
-            <BorderBeam size={200} duration={12} delay={4} />
+            <BorderBeam size={500} duration={8} delay={2} />
 
-              </NeonGradientCard>
 
            
           </div>
@@ -182,6 +185,17 @@ export default function Home() {
 
       </section> */}
 
+
+{/* <StickyScrollRevealDemo /> */}
+
+     <div className='flex flex-col items-center justify-center mt-32'>
+
+     {/* <WobbleCardDemo /> */}
+
+     </div>
+
+  
+
       <Community />
 
 
@@ -200,60 +214,12 @@ export default function Home() {
 
 
       {/* footer */}
+      <Footer />
  
 
-      <section className="w-full p-10 border-t-2 border-black text-justify bg-white dark:bg-neutral-950  text-white dark:text-black">
-        <div className="container mx-auto px-4 grid grid-cols-2 md:grid-cols-3 gap-8">
-          <div className="flex flex-col text-black dark:text-white">
-            <h2 className="text-md text-gray-500 font-extrabold mb-4">lINKS</h2>
-            <a href="/roadmap" className="hover:text-gray-300 transition-colors mb-2">Changelog</a>
-            <a href="/features" className="hover:text-gray-300 transition-colors mb-2">Features</a>
-            <a href="/pricing" className="hover:text-gray-300 transition-colors mb-2">Pricing</a>
-          </div>
-         
 
-          <div className="flex flex-col  text-black dark:text-white">
-            <h2 className="text-md text-gray-500 font-extrabold mb-4">SUPPORT</h2>
-            <a href="/security" className="hover:text-gray-300 transition-colors mb-2">Security</a>
-            <a href="/get-a-demo" className="hover:text-gray-300 transition-colors mb-2">Get a demo</a>
-            <a href="/contact-us" className="hover:text-gray-300 transition-colors">Contact Us</a>
-          </div>
-          <div className="flex flex-col text-black dark:text-white">
-            <h2 className="text-md text-gray-500 font-extrabold mb-4">LEGAL</h2>
-            <a href="/privacy-policy" className="hover:text-gray-300 transition-colors mb-2">Privacy Policy</a>
-            <a href="/terms-of-service" className="hover:text-gray-300 transition-colors mb-2">Terms of Use</a>
-            <a href="/disclosure" className="hover:text-gray-300 transition-colors">Disclosure</a>
-          </div>
-        </div>
-        <div className="container mx-auto px-4 mt-8 flex flex-col md:flex-row items-center justify-between">
-          <aside className="flex items-center gap-[2px]  text-black dark:text-white">
-            <p className="text-2xl font-bold ">Nexus</p>
-            <Image
-              src="/logo.png"
-              width={15}
-              height={15}
-              alt="fuzzie logo"
-              className="shadow-sm bg-neutral-500"
-            />
-            <p className="text-2xl font-bold ">Flow</p>
-          </aside>
-          <div className="flex space-x-4  text-black dark:text-white">
-            <a href="/contact" className="hover:text-gray-300 transition-colors">
-              <MailCheckIcon />
-            </a>
-            <a href="/linkedin" className="hover:text-gray-300 transition-colors">
-              <LinkedinIcon />
-            </a>
-            <a href="/twitter" className="hover:text-gray-300 transition-colors">
-              <Twitter />
-            </a>
-          </div>
-          <p className="text-sm mt-4 md:mt-0  text-black dark:text-white">&copy; 2024 NexusFlow. All rights reserved.</p>
-        </div>
-        {/* <ModeToggle /> */}
-      </section>
 
-      {/* <ModeToggle /> */}
+     
 
     </main>
   )

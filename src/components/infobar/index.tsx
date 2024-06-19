@@ -1,5 +1,5 @@
 import React from 'react'
-import BreadCrumb from './infoBar'
+import {DynamicBreadcrumb} from './infoBar'
 import { Card } from '../ui/card'
 import { UserButton } from '@clerk/nextjs'
 import {
@@ -21,20 +21,12 @@ type Props = {}
 
 const InfoBar = (props: Props) => {
   return (
-    <div className="flex w-full justify-between items-center py-1 px-4 ">
-      <BreadCrumb />
+    <div className="flex w-full justify-between items-center py-1 px-4 mt-2 ">
+      <DynamicBreadcrumb />
   
       <div className="flex gap-3 items-center">
         <div>
-        {/* <Command>
-  <CommandInput placeholder="Type a command or search..." />
-  <CommandList>
-  
-   
-    <CommandSeparator />
-  
-  </CommandList>
-</Command> */}
+     
 
         </div>
       </div>

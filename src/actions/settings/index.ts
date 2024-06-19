@@ -6,7 +6,7 @@ import { currentUser } from '@clerk/nextjs/server'
 
 export const onIntegrateDomain = async (domain: string, icon: string, custom_domain: string, description: string, subdomain: string) => {
   const user = await currentUser()
-  if (!user) return { status: 4000, message: "User not found." }
+  if (!user) return { status: 400, message: "User not found." }
 
   try {
     const subscription = await db.user.findUnique({
@@ -54,7 +54,10 @@ export const onIntegrateDomain = async (domain: string, icon: string, custom_dom
           },
         },
       })
-      return { status: 200, message: 'Domain successfully added' }
+      if (newDomain) {
+        return { status: 200, message: 'Domain successfully added' }
+        //console.log(newDomain)
+      }
     } else {
       return { status: 400, message: "You've reached the maximum number of domains, upgrade your plan" }
     }
@@ -182,3 +185,46 @@ export const onGetPaymentConnected = async () => {
   }
 }
 
+// Function to fetch site data based on a custom domain
+export const readSiteDomain = async (domain: string) => {
+  try {
+    const user = await currentUser();
+    if (!user) return { status: 400, message: "User not found." };
+
+    const domainData = await db.user.findFirst({
+      where: {
+        clerkId: user.id,
+        domains: {
+          some: {
+            custom_domain: domain
+          }
+        }
+      },
+      select: {
+        domains: {
+          where: {
+            custom_domain: domain
+          },
+          select: {
+            id: true,
+            name: true,
+            icon: true,
+            subdomain: true,
+            custom_domain: true,
+            description: true,
+            userId: true
+          }
+        }
+      }
+    });
+
+    if (!domainData) {
+      return { status: 404, message: "Domain not found." };
+    }
+
+    return domainData.domains;
+  } catch (error) {
+    console.error("Error fetching domain data:", error);
+    return { status: 500, message: "Internal server error" };
+  }
+};

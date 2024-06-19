@@ -50,12 +50,12 @@ const DomainMenu = ({ domains, min }: Props) => {
           <Loader loading={loading}>
             <form
               className="mt-3 md:grid grid-cols-2   gap-3"
-              // onSubmit={onAddDomain}
-              onSubmit={(e) => {
-                e.preventDefault();
-                console.log("Form values before submission:", new FormData(e.target as HTMLFormElement));
+              onSubmit={onAddDomain}
+              // onSubmit={(e) => {
+              //   e.preventDefault();
+              //   console.log("Form values before submission:", new FormData(e.target as HTMLFormElement));
 
-              }}
+              // }}
 
               
             >

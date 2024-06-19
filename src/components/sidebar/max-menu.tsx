@@ -32,13 +32,8 @@ const MaxMenu = ({ current, domains, onExpand, onSignOut }: Props) => {
       <div className="flex justify-between items-center">
         	<aside className="flex ml-2 items-center gap-[2px]">
         <p className="text-sm font-bold ">Nexus</p>
-        <Image
-          src="/logo.png"
-          width={10}
-          height={10}
-          alt="fuzzie logo"
-          className="animate-fade-in bg-neutral-500 dark:bg-neutral-500 opacity-0 delay-300 fill-mode-forwards"
-        />
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-zap"><path d="M4 14a1 1 0 0 1-.78-1.63l9.9-10.2a.5.5 0 0 1 .86.46l-1.92 6.02A1 1 0 0 0 13 10h7a1 1 0 0 1 .78 1.63l-9.9 10.2a.5.5 0 0 1-.86-.46l1.92-6.02A1 1 0 0 0 11 14z"/></svg>
+
         <p className="text-sm font-bold ">Flow</p>
 
      
@@ -51,7 +46,7 @@ const MaxMenu = ({ current, domains, onExpand, onSignOut }: Props) => {
         
       </div>
      
-      <Separator className='mt-7  ' />
+      {/* <Separator className='mt-7  ' /> */}
 
       <div className="animate-fade-in opacity-0 delay-300 fill-mode-forwards flex flex-col justify-between h-full pt-10">
         <div className="flex flex-col">

@@ -38,7 +38,7 @@ export const MinMenu = ({
       <span className="animate-fade-in opacity-0 delay-300 fill-mode-forwards cursor-pointer">
         <MenuLogo onClick={onShrink} />
       </span>
-<Separator className='mt-7' />
+{/* <Separator className='mt-7' /> */}
     
       <div className="animate-fade-in opacity-0 delay-300 fill-mode-forwards flex flex-col justify-between h-full pt-4 ">
 

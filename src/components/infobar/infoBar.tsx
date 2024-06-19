@@ -1,45 +1,63 @@
 'use client'
 import useSideBar from '@/content/use-sidebar'
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { Loader } from '../loader'
 import { Switch } from '../ui/switch'
 import { Separator } from '../ui/separator'
+import {
+  Breadcrumb,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  BreadcrumbList,
+  BreadcrumbPage,
+  BreadcrumbSeparator,
+} from "@/components/ui/breadcrumb"
 
-type Props = {}
-
-const BreadCrumb = (props: Props) => {
-  const {
-    
-    expand,
-    loading,
-    
-    onExpand,
-    page,
-    onSignOut,
-    //realtime,
-  } = useSideBar()
-  return (
-    <div className="flex flex-col ">
-      <div className="flex gap-5 items-center">
-        <h2 className="text-3xl font-bold capitalize ">{page}</h2>
-      
-      </div>
-      {/* <Separator/> */}
-      <p className="text-gray-500 text-sm">
-        {page == 'settings'
-          ? 'Manage your account settings, preferences and integrations'
-          : page == 'dashboard'
-          ? 'A detailed overview of your metrics, usage, customers and more'
-          : page == 'appointment'
-          ? 'View and edit all your appointments'
-          : page == 'email-marketing'
-          ? 'Send bulk emails to your customers'
-          : page == 'integration'
-          ? 'Connect third-party applications into Corinna-AI'
-          : 'Modify domain settings, change chatbot options, enter sales questions and train your bot to do what you want it to.'}
-      </p>
-    </div>
-  )
+const breadcrumbPaths: { [key: string]: { name: string; url?: string }[] } = {
+  settings: [{ name: 'Home', url: '/' }, { name: 'Settings' }],
+  dashboard: [{ name: 'Home', url: '/' }, { name: 'Dashboards' }],
+  appointment: [{ name: 'Home', url: '/' }, { name: 'Appointment' }],
+  connections: [{ name: 'Home', url: '/' }, { name: 'connections' }],
+  integration: [{ name: 'Home', url: '/' }, { name: 'Integration' }],
+  // Add other paths as needed
 }
 
-export default BreadCrumb
+export function DynamicBreadcrumb() {
+  const { page } = useSideBar()
+  const [pathSegments, setPathSegments] = useState<string[]>([]);
+
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const segments = window.location.pathname.split('/').filter(Boolean);
+      setPathSegments(segments);
+    }
+  }, []);
+
+  // Ensure page is defined, otherwise use a default value
+  const pageKey = page ? page.replace(/ /g, '') : 'default'; // Replace 'default' with a suitable default key if needed
+  let path = breadcrumbPaths[pageKey.toLowerCase()] || [{ name: 'Home', url: '/' }];
+
+  if (pathSegments.length > 1) {
+    const dynamicPart = pathSegments[pathSegments.length - 1];
+    path = [...path, { name: dynamicPart, url: `/${pathSegments.join('/')}` }];
+  }
+
+  return (
+    <Breadcrumb>
+      <BreadcrumbList>
+        {path.map((item, index) => (
+          <React.Fragment key={index}>
+            <BreadcrumbItem>
+              {item.url ? (
+                <BreadcrumbLink href={item.url}>{item.name}</BreadcrumbLink>
+              ) : (
+                <BreadcrumbPage>{item.name}</BreadcrumbPage>
+              )}
+            </BreadcrumbItem>
+            {index < path.length - 1 && <BreadcrumbSeparator />}
+          </React.Fragment>
+        ))}
+      </BreadcrumbList>
+    </Breadcrumb>
+  )
+}

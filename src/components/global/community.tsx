@@ -17,7 +17,7 @@ export default function Community() {
         <h2 className="mb-14 text-center text-2xl font-heading md:text-3xl lg:mb-20 lg:text-4xl">
           Loved by the community
         </h2>
-        <div className="w900:grid-cols-1 w900:gap-0 grid grid-cols-3 gap-4 lg:gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 lg:gap-8">
           {[
             [review(), review()],
             [review(), review(), review()],
@@ -26,7 +26,7 @@ export default function Community() {
             <div className="group flex flex-col justify-center" key={index}>
               {card.map(({ jobTitle, pfp, fullName, review }, index) => (
                 <div
-                  className="w900:min-h-20 w900:w-2/3 w900:mx-auto w500:w-full mb-4 min-h-48 w-full rounded-base border-2 border-black bg-white/100 dark:bg-neutral-800 p-5 shadow-base lg:mb-8"
+                  className="mb-4 min-h-48 w-full rounded-base border-2 border-black bg-white/100 dark:bg-neutral-800 p-5 shadow-base lg:mb-8"
                   key={index}
                 >
                   <div className="flex items-center gap-5">
@@ -34,9 +34,7 @@ export default function Community() {
                       className="h-12 w-12 rounded-base border-2 border-black dark:border-white"
                       src={pfp}
                       alt="pfp"
-                     
                     />
-
                     <div>
                       <h4 className="text-lg font-heading">{fullName}</h4>
                       <p className="text-sm font-base">{jobTitle}</p>
