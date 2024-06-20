@@ -7,13 +7,17 @@ import { CheckCircle } from 'lucide-react';
 type Props = {
   params: {
     domain: string;
-    icon: string;
   };
 };
 
 const DomainSettingsPage = async ({ params }: Props) => {
   const domain = await onGetCurrentDomainInfo(params.domain);
   if (!domain) redirect('/dashboard');
+
+  const isProduction = process.env.NODE_ENV === 'production';
+  const baseDomain = isProduction ? 'nexusflow.io' : 'localhost:3000';
+  const protocol = isProduction ? 'https' : 'http';
+  const subdomainLink = `${protocol}://${domain.domains[0].subdomain}.${baseDomain}`;
 
   return (
     <>
@@ -26,7 +30,7 @@ const DomainSettingsPage = async ({ params }: Props) => {
               <div className="flex items-center">
                 <div className="w-32 h-24 bg-gray-200 flex items-center justify-center">
                   <Image
-                    src={`https://ucarecdn.com/${domain.domains[0].icon}/`} // Assuming a placeholder image
+                    src={`https://ucarecdn.com/${domain.domains[0]?.icon}/`} // Assuming a placeholder image
                     alt="Website Screenshot"
                     width={128}
                     height={96}
@@ -42,8 +46,10 @@ const DomainSettingsPage = async ({ params }: Props) => {
                   <p className="text-sm text-gray-500 mt-2">
                     {/* Creation Date: <span>{new Date(domain.domains[0].created_at).toLocaleString()}</span> */}
                   </p>
-                  <p className="text-sm text-gray-500">
-                    Email: <span>{domain.domains[0].custom_domain}</span>
+                  <p className="text-sm text-gray-500 mt-2">
+                    <a href={subdomainLink} className="text-blue-600 hover:underline">
+                      Visit {domain.domains[0].subdomain} subdomain
+                    </a>
                   </p>
                 </div>
               </div>
@@ -61,15 +67,9 @@ const DomainSettingsPage = async ({ params }: Props) => {
                     <th className="py-2 px-4 border-b text-left">Email</th>
                   </tr>
                 </thead>
-                {/* <tbody>
-                  {domain.users.map((user: any) => (
-                    <tr key={user.id}>
-                      <td className="py-2 px-4 border-b">{user.name}</td>
-                      <td className="py-2 px-4 border-b">{user.role}</td>
-                      <td className="py-2 px-4 border-b">{user.email}</td>
-                    </tr>
-                  ))}
-                </tbody> */}
+                <tbody>
+                  {/* Add user rows here */}
+                </tbody>
               </table>
             </div>
           </div>

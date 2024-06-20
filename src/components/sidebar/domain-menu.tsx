@@ -18,7 +18,6 @@ type Props = {
         name: string
 	   description: string
 	   subdomain: string
-	   custom_domain: string
         icon: string | null
       }[]
     | null

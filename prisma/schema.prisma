@@ -42,7 +42,6 @@ model Domain {
 
 
   subdomain  String  @unique
-  custom_domain String?
 
   User       User?      @relation(fields: [userId], references: [id], onDelete: Cascade)
   userId     String?    @db.Uuid

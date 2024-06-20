@@ -4,7 +4,7 @@ import { currentUser } from '@clerk/nextjs/server'
 
 
 
-export const onIntegrateDomain = async (domain: string, icon: string, custom_domain: string, description: string, subdomain: string) => {
+export const onIntegrateDomain = async (domain: string, icon: string, description: string, subdomain: string) => {
   const user = await currentUser()
   if (!user) return { status: 400, message: "User not found." }
 
@@ -47,7 +47,6 @@ export const onIntegrateDomain = async (domain: string, icon: string, custom_dom
             create: {
               name: domain,
               icon: icon,
-              custom_domain: custom_domain,
               description: description,
               subdomain: subdomain,
             },
@@ -109,7 +108,6 @@ export const onGetAllAccountDomains = async () => {
             icon: true,
             id: true,
             subdomain: true,
-            custom_domain: true,
             description: true,
             userId: true,
 		},
@@ -148,7 +146,6 @@ export const onGetCurrentDomainInfo = async (domain: string) => {
             name: true,
             icon: true,
             subdomain: true,
-            custom_domain: true,
             description: true,
             userId: true,
 		},

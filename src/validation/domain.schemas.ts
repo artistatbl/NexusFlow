@@ -8,7 +8,6 @@ export type DomainSettingsProps = {
   description?: string
   subdomain?: string
   image?: any
-  custom_domain?: string
   welcomeMessage?: string
 }
 
@@ -34,13 +33,7 @@ export const AddDomainSchema = z.object({
     .refine((files) => ACCEPTED_FILE_TYPES.includes(files?.[0]?.type), {
       message: 'Only JPG, JPEG & PNG are accepted file formats',
     }),
-  custom_domain: z
-    .string()
-    .optional()
-    .refine(
-      (value) => /^((?!-)[A-Za-z0-9-]{1,255}(?<!-))$/i.test(value ?? ''),
-      'This is not a valid custom domain'
-    ),
+ 
 });
 
 export const DomainSettingsSchema = z
@@ -67,16 +60,7 @@ export const DomainSettingsSchema = z
     image: z
       .any()
       .optional(),
-    custom_domain: z
-      .string()
-      .optional()
-      .refine(
-        (value) =>
-          /^((?!-)[A-Za-z0-9-]{1,255}(?<!-))$/i.test(value ?? ''),
-        'This is not a valid custom domain'
-      )
-      .optional()
-      .or(z.literal('').transform(() => undefined)),
+  
     welcomeMessage: z
       .string()
       .min(6, 'The message must be at least 6 characters')
@@ -105,9 +89,3 @@ export const DomainSettingsSchema = z
   )
 
 
-  //testing this is nothing here, just trying to see if the schema is working
-  //testing this is nothing here, just trying to see if the schema is working
-  //testing this is nothing here, just trying to see if the schema is working
-  //testing this is nothing here, just trying to see if the schema is working
-  //testing this is nothing here, just trying to see if the schema is working
-  //testing this is nothing here, just trying to see if the schema is working
