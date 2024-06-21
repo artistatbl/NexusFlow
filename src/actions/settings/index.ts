@@ -181,3 +181,44 @@ export const onGetPaymentConnected = async () => {
     console.log(error)
   }
 }
+
+
+export const onGetSubdomainDetails = async (domainId: string) => {
+  const user = await currentUser();
+  if (!user) return;
+
+  try {
+    const domainDetails = await db.user.findUnique({
+      where: {
+        clerkId: user.id,
+        domains: {
+          some: {
+            id: domainId,
+          },
+        },
+      },
+      select: {
+        domains: {
+          where: {
+            id: domainId,
+          },
+          select: {
+            id: true,
+            name: true,
+            icon: true,
+            subdomain: true,
+            description: true,
+            userId: true,
+          },
+        },
+      },
+    });
+
+    if (domainDetails && domainDetails.domains.length > 0) {
+      return domainDetails.domains[0];
+    }
+  } catch (error) {
+    console.error("Error fetching subdomain details:", error);
+    return null;
+  }
+}

@@ -21,21 +21,12 @@ export const readSiteDomain = async (domain: string) => {
     const { data, error } = await supabase
       .from("Domain")
       .select()
-      .eq("subdomain", domain)
-      // .single();
+      .eq("subdomain", domain);
 
-    if (error) {
-      console.error("Error fetching domain data:", error);
-      return { status: 500, message: "Internal server error" };
-    }
+    if (error?.code) return error;
 
-    if (!data) {
-      return { status: 404, message: "Domain not found." };
-    }
-
-    return { status: 200, domain: data };
+    return data;
   } catch (error: any) {
-    console.error("Error fetching domain data:", error);
-    return { status: 500, message: "Internal server error" };
+    return error;
   }
 };

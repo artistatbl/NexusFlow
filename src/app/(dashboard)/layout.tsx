@@ -40,7 +40,7 @@ const OwnerLayout = async ({ children }: Props) => {
      ...domain,
      description: domain.description || 'No description available',
      subdomain: domain.subdomain || 'default',
-     custom_domain: domain.custom_domain || 'none'
+     //custom_domain: domain.custom_domain || 'none'
    }));
 
    return (

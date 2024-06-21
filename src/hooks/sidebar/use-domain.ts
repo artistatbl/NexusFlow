@@ -41,7 +41,7 @@ export const useDomain = () => {
       uploaded.uuid,
       values.description,
       values.subdomain,
-      values.custom_domain
+     // values.custom_domain
     );
     if (domain) {
       reset()

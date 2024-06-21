@@ -27,11 +27,11 @@ type Props = {
 const DomainMenu = ({ domains, min }: Props) => {
   const { register, onAddDomain, loading, errors, isDomain } = useDomain()
 
-  console.log("DomainMenu component rendered");
-  console.log("Domains:", domains);
-  console.log("Loading:", loading);
-  console.log("Errors:", errors);
-  console.log("isDomain:", isDomain);
+  // console.log("DomainMenu component rendered");
+  // console.log("Domains:", domains);
+  // console.log("Loading:", loading);
+  // console.log("Errors:", errors);
+  // console.log("isDomain:", isDomain);
 
   return (
     <div className={cn('flex flex-col gap-3', min ? 'mt-6' : 'mt-3')}>
@@ -48,7 +48,7 @@ const DomainMenu = ({ domains, min }: Props) => {
         >
           <Loader loading={loading}>
             <form
-              className="mt-3 md:grid grid-cols-2   gap-3"
+              className="mt-3 md:grid grid-cols-2 bg-black rounded-lg gap-3"
               onSubmit={onAddDomain}
               // onSubmit={(e) => {
               //   e.preventDefault();
@@ -76,6 +76,7 @@ const DomainMenu = ({ domains, min }: Props) => {
                 placeholder="Enter domain description"
                 type="text"
               />
+             
               <FormGenerator
                 inputType="input"
                 register={register}
@@ -85,15 +86,8 @@ const DomainMenu = ({ domains, min }: Props) => {
                 placeholder="Enter subdomain"
                 type="text"
               />
-              <FormGenerator
-                inputType="input"
-                register={register}
-                label="Custom Domain"
-                name="custom_domain"
-                errors={errors}
-                placeholder="Enter custom domain"
-                type="text"
-              />
+             
+              
               <UploadButton
                 register={register}
                 label="Upload Icon"
