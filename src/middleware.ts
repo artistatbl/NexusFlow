@@ -26,6 +26,8 @@ export default clerkMiddleware(async (auth, req) => {
     // In development, handle localhost case
     currentHost = hostname?.replace(`.localhost:3000`, "");
   }
+  console.log("currentHost", currentHost);
+  console.log("hostname", hostname);
 
   // If there's no currentHost, likely accessing the root domain, handle accordingly
   if (!currentHost) {
@@ -38,17 +40,18 @@ export default clerkMiddleware(async (auth, req) => {
 
   // Handle the case where no subdomain data is found
   if (!response || !response.length) {
+    console.log("No response found", response);
     // Continue to the next middleware or serve the root content
     return NextResponse.next();
   }
 
-  //onst domainId = response?.[0]?.id;
+  const domainId = response?.[0]?.id;
   // Get the tenant's subdomain from the response
   const tenantSubdomain = response[0]?.subdomain;
 
   if (tenantSubdomain) {
     return NextResponse.rewrite(
-      new URL(`/${tenantSubdomain}${pathname}`, req.url)
+      new URL(`/${domainId}${pathname}`, req.url)
     );
   }
 

@@ -25,7 +25,6 @@ CREATE TABLE "Domain" (
     "description" TEXT,
     "icon" TEXT NOT NULL,
     "subdomain" TEXT NOT NULL,
-    "custom_domain" TEXT,
     "userId" UUID,
 
     CONSTRAINT "Domain_pkey" PRIMARY KEY ("id")

@@ -29,7 +29,7 @@ export async function GET(req: NextRequest) {
             name: true,
             icon: true,
             subdomain: true,
-            custom_domain: true,
+            //custom_domain: true,
             description: true,
             //userId: true,
           },
