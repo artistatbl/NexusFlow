@@ -4,12 +4,25 @@ import { readSiteDomain } from "@/actions/domain/readdomain";
 
   
 //Define the routes that require authentication
-const isProtectedRoute = createRouteMatcher(["/cms(.*)"]);
+const isProtectedRoute = createRouteMatcher(["/dash(.*)"]);
 
 // Main middleware function
 export default clerkMiddleware(async (auth, req) => {
   // Check if the route is protected and enforce authentication if it is
-  if (isProtectedRoute(req)) auth().protect();
+  if (!auth().userId && isProtectedRoute(req)) {
+
+    // Add custom logic to run before redirecting
+
+    return auth().redirectToSignIn();
+  }
+
+
+  
+    
+
+
+
+
 
   const url = req.nextUrl;
   const pathname = url.pathname;

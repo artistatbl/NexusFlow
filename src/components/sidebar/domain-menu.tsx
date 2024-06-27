@@ -41,7 +41,8 @@ const DomainMenu = ({ domains, min }: Props) => {
           description="Add in your domain address to integrate your chatbot"
           title="Add your Domain"
           onOpen={
-            <div className="cursor-pointer text-gray-500 rounded-full border-2">
+            <div className="cursor-pointer text-gray-500 ml-1
+            rounded-full border-2">
               <Plus />
             </div>
           }
@@ -108,7 +109,7 @@ const DomainMenu = ({ domains, min }: Props) => {
         {domains &&
           domains.map((domain) => (
             <Link
-              href={`/settings/${domain.name.split('.')[0]}`}
+              href={`/domain/${domain.name.split('.')[0]}`}
               key={domain.id}
               className={cn(
                 'flex gap-3 items-center justify-center hover:bg-neutral-500 dark:hover:bg-neutral-500 dark:bg-black bg-neutral-900 rounded-md transition duration-100 ease-in-out cursor-pointer',

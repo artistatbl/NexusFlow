@@ -33,7 +33,7 @@ export const MinMenu = ({
   domains,
 }: MinMenuProps) => {
   return (
-    <div className="p-3 flex flex-col items-center  h-full">
+    <div className="p-3 flex flex-col items-center  h-full ">
 
       <span className="animate-fade-in opacity-0 delay-300 fill-mode-forwards cursor-pointer">
         <MenuLogo onClick={onShrink} />
@@ -70,13 +70,12 @@ export const MinMenu = ({
 
 
         <div className="flex flex-col">
+
+          <div className='flex justify-center items-center bg-neutral-700 rounded-md p-2'>
+
+
         <UserButton />
-          <MenuItem
-            size="min"
-            label="Sign out"
-            icon={<LogOut />}
-            onSignOut={onSignOut}
-          />
+          </div>
          
         
         </div>

@@ -194,6 +194,7 @@ export const onGetSubdomainDetails = async (domainId: string) => {
         domains: {
           some: {
             id: domainId,
+      
           },
         },
       },
@@ -201,6 +202,46 @@ export const onGetSubdomainDetails = async (domainId: string) => {
         domains: {
           where: {
             id: domainId,
+          },
+          select: {
+            id: true,
+            name: true,
+            icon: true,
+            subdomain: true,
+            description: true,
+            userId: true,
+          },
+        },
+      },
+    });
+
+    if (domainDetails && domainDetails.domains.length > 0) {
+      return domainDetails.domains[0];
+    }
+  } catch (error) {
+    console.error("Error fetching subdomain details:", error);
+    return null;
+  }
+}
+
+export const onGetCurrentDomain = async (domainName: string) => {
+  const user = await currentUser();
+  if (!user) return null;
+
+  try {
+    const domainDetails = await db.user.findUnique({
+      where: {
+        clerkId: user.id,
+        domains: {
+          some: {
+            name: domainName,
+          },
+        },
+      },
+      select: {
+        domains: {
+          where: {
+            name: domainName,
           },
           select: {
             id: true,

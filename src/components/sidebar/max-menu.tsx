@@ -38,7 +38,7 @@ const MaxMenu = ({ current, domains, onExpand, onSignOut }: Props) => {
      
       </aside>
         <CircleChevronRight
-          className="cursor-pointer animate-fade-in opacity-0 delay-300 fill-mode-forwards"
+          className="cursor-pointer animate-fade-in opacity-0 delay-300 fill-mode-forwards "
           onClick={onExpand}
         />
 
@@ -47,7 +47,7 @@ const MaxMenu = ({ current, domains, onExpand, onSignOut }: Props) => {
      
       {/* <Separator className='mt-7  ' /> */}
 
-      <div className="animate-fade-in opacity-0 delay-300 fill-mode-forwards flex flex-col justify-between h-full pt-10">
+      <div className="animate-fade-in opacity-0 delay-300 fill-mode-forwards flex flex-col justify-between h-full pt-10 ">
         <div className="flex flex-col">
           <p className="text-xs text-gray-500  ">MENU</p>
           {SIDE_BAR_MENU.map((menu, key) => (
@@ -64,17 +64,15 @@ const MaxMenu = ({ current, domains, onExpand, onSignOut }: Props) => {
           <DomainMenu domains={domains} />
         </ScrollArea>
         </div>
-        <UpgradeMenu />  
+        {/* <UpgradeMenu />   */}
         <div className="flex flex-col">
           <p className="text-xs text-gray-500 mb-3">OPTIONS</p>
-          <UserButton />
-          <MenuItem
-            size="max"
-            label="Sign out"
-            icon={<LogOut />}
-            onSignOut={onSignOut}
-          />
-       
+          <div className='flex justify-center items-center bg-neutral-700 rounded-md p-2'>
+
+
+<UserButton />
+  </div>
+          
        
         </div>
       </div>
