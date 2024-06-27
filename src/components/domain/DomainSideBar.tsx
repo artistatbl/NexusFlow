@@ -34,9 +34,10 @@ const DomainSidebar = async ({params}:props) => {
 
       </div>
       <div className="flex flex-col items-center space-y-4 grow justify-center">
-        {SIDE_BAR_DOMAIN_MENU.map((menu) => (
-          <button className="flex items-center justify-center w-10 h-10 bg-gray-800 rounded-md">
+        {SIDE_BAR_DOMAIN_MENU.map((menu, key) => (
+          <button className="flex items-center justify-center w-10 h-10 bg-gray-800 rounded-md" key={key}>
             {menu.icon}
+            
           </button>
         ))}
       </div>
