@@ -71,7 +71,7 @@ export const MinMenu = ({
 
         <div className="flex flex-col">
 
-          <div className='flex justify-center items-center bg-neutral-700 rounded-md p-2'>
+          <div className='flex justify-center items-center bg-neutral-700 rounded-md  p-2'>
 
 
         <UserButton />
